@@ -31,6 +31,9 @@ using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
 using BH.oM.Common.Materials;
 
+using Tekla.Structures.Model;
+using Tekla.Structures.Filtering;
+
 namespace BH.Adapter.Tekla
 {
     public partial class TeklaAdapter
@@ -52,7 +55,14 @@ namespace BH.Adapter.Tekla
             //to only read in the section properties 5 times, not 1000. This might of course vary from software to software.
 
             //Implement code for reading bars
-            throw new NotImplementedException();
+
+            if (ids==null)
+            {
+                m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM);
+
+                var filter = new StringFilterExpression();
+                m_ObjectSelector.GetObjectsByFilter()
+            }
         }
 
         /***************************************************/
