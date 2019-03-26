@@ -30,7 +30,9 @@ using BH.oM.Structure.Elements;
 using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
 using BH.oM.Common.Materials;
+using BH.Engine.Tekla;
 
+using Tekla.Structures;
 using Tekla.Structures.Model;
 using Tekla.Structures.Filtering;
 
@@ -56,13 +58,42 @@ namespace BH.Adapter.Tekla
 
             //Implement code for reading bars
 
+            List<Beam> tsBeamList = new List<Beam>();
+            List<Bar> bhBarList = new List<Bar>();
+
             if (ids==null)
             {
-                m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM);
+                foreach(ModelObject tsObj in m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM))
+                {
+                    tsBeamList.Add(tsObj as Beam);
+                }
 
-                var filter = new StringFilterExpression();
-                m_ObjectSelector.GetObjectsByFilter()
             }
+            else
+            {
+                //there might be some efficiency gain in understanding how to use: selection with ExpressionFilter, i.e. 'm_ObjectSelector.GetObjectsByFilter()'
+                foreach (string id in ids)
+                {
+                    int idNum = System.Convert.ToInt32(id);
+                    ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(idNum));
+
+                    //missing ! ! ! check it is a beam type
+
+                    tsBeamList.Add(tsObj as Beam);
+                }
+            }
+
+            foreach (Beam tsBeam in tsBeamList)
+            {
+                Bar bhBar = new Bar();
+                bhBar.StartNode = tsBeam.StartPoint.ToBHoMNode();
+                bhBar.EndNode = tsBeam.EndPoint.ToBHoMNode();
+                bhBar.Name = tsBeam.Name;
+                //bhBar.SectionProperty = tsBeam.Profile.ToBHoM();// not implemented yet
+                
+            }
+
+            return bhBarList;
         }
 
         /***************************************************/

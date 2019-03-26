@@ -26,7 +26,7 @@ namespace BH.Engine.Tekla
 
         /***************************************************/
 
-        public static Node ToBHoM(this tsGeo.Point tsPoint)
+        public static Node ToBHoMNode(this tsGeo.Point tsPoint)
         {
             Node node = new Node();
             
