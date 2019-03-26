@@ -45,6 +45,9 @@ namespace BH.Adapter.Tekla
 
             success = CreateCollection(objects as dynamic); //Calls the correct CreateCollection method based on dynamic casting
 
+            success = m_TeklaModel.CommitChanges();//--hopfully this will not need to be moved into the individual object creation classes
+
+            
             //UpdateViews()             //If there exists a command for updating the views is the software call it now:
 
             return success;             //Finally return if the creation was successful or not
