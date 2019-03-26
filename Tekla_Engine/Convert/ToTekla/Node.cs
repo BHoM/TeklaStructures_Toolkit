@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
 
+using tsGeo = Tekla.Structures.Geometry3d;
+
+
 namespace BH.Engine.Tekla
 {
     public static partial class Convert
@@ -21,5 +24,10 @@ namespace BH.Engine.Tekla
         //}
 
         /***************************************************/
+
+        public static tsGeo.Point ToTeklaPoint(this Node node)
+        {
+            return new tsGeo.Point(node.Coordinates.Origin.X, node.Coordinates.Origin.Y, node.Coordinates.Origin.Z);
+        }
     }
 }

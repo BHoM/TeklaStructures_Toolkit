@@ -29,6 +29,11 @@ using BH.oM.Structure.Elements;
 using BH.oM.Structure.Properties;
 using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
+using BH.Engine.Tekla;
+
+using Tekla.Structures;
+using Tekla.Structures.Model;
+using tsGeo = Tekla.Structures.Geometry3d;
 
 namespace BH.Adapter.Tekla
 {
@@ -43,6 +48,8 @@ namespace BH.Adapter.Tekla
         {
             //Code for creating a collection of bars in the software
 
+            bool success = true;
+
             foreach (Bar bar in bars)
             {
                 //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
@@ -52,10 +59,19 @@ namespace BH.Adapter.Tekla
                 object startNodeId = bar.StartNode.CustomData[AdapterId];
                 object endNodeId = bar.EndNode.CustomData[AdapterId];
                 object SecPropId = bar.SectionProperty.CustomData[AdapterId];
+
+                Beam tsBeam = new Beam();
+                tsBeam.StartPoint = bar.StartNode.ToTeklaPoint();
+                tsBeam.EndPoint = bar.EndNode.ToTeklaPoint();
+                tsBeam.Identifier = new Identifier();//create from barId if is int
+                tsBeam.Profile.ProfileString = "SHS150*150*10";// profileName; //<--- this looks like the minimum needed but would be better to set the actual profile
+
+                if (!tsBeam.Insert())
+                    success = false;
             }
 
+            return success;
 
-            throw new NotImplementedException();
         }
 
         /***************************************************/
