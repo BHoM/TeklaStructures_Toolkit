@@ -90,7 +90,8 @@ namespace BH.Adapter.Tekla
                 bhBar.EndNode = tsBeam.EndPoint.ToBHoMNode();
                 bhBar.Name = tsBeam.Name;
                 //bhBar.SectionProperty = tsBeam.Profile.ToBHoM();// not implemented yet
-                
+
+                bhBarList.Add(bhBar);
             }
 
             return bhBarList;

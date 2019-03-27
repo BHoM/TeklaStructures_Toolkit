@@ -42,14 +42,13 @@ namespace BH.Adapter.Tekla
             //The if statement below is designed to grab the first free index for the first object being created and after that increment.
 
             //Change from object to what the specific software is using
-            object index;
+            int index = 1;
 
             if (!refresh && m_indexDict.TryGetValue(objectType, out index))
             {
                 //If possible to find the next index based on the previous one (for example index++ for an int based index system) do it here
 
-                //Example int based:
-                //index++
+                index++;
             }
             else
             {
