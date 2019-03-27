@@ -28,6 +28,8 @@ using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.Properties.Constraint;
 
+
+
 namespace BH.Adapter.Tekla
 {
     public partial class TeklaAdapter
@@ -40,14 +42,19 @@ namespace BH.Adapter.Tekla
         private bool CreateCollection(IEnumerable<Node> nodes)
         {
             //Code for creating a collection of nodes in the software
+            bool success = true;
 
             foreach (Node node in nodes)
             {
                 //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
                 object nodeId = node.CustomData[AdapterId];
+
+                // not sure how to approach this... Bars do not contain start-/end-nodes but start-/end-points!
+                // this method could be used to create Tekla.Structures.Analysis.AnalysisNode() - but this might not be what this class is intended for
+
             }
 
-            throw new NotImplementedException();
+            return success;
         }
 
         /***************************************************/
