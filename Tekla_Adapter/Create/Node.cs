@@ -51,7 +51,7 @@ namespace BH.Adapter.Tekla
 
                 // not sure how to approach this... Bars do not contain start-/end-nodes but start-/end-points!
                 // this method could be used to create Tekla.Structures.Analysis.AnalysisNode() - but this might not be what this class is intended for
-
+                // there likly needs to remove the creation of this type from the dependencyTypes of Bar-type
             }
 
             return success;
