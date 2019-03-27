@@ -40,6 +40,7 @@ namespace BH.Adapter.Tekla
         private bool CreateCollection(IEnumerable<ISectionProperty> sectionProperties)
         {
             //Code for creating a collection of section properties in the software
+            bool success = true;
 
             foreach (ISectionProperty sectionProperty in sectionProperties)
             {
@@ -48,9 +49,13 @@ namespace BH.Adapter.Tekla
                 //If also the default implmentation for the DependencyTypes is used,
                 //one can from here get the id's of the subobjects by calling (cast into applicable type used by the software): 
                 object materialId = sectionProperty.Material.CustomData[AdapterId];
+
+                //proposed functionality:
+                //check if section exists in the loaded catalog from tekla - m_ProfileEnumerator() - if not add the material
+
             }
 
-            throw new NotImplementedException();
+            return success;
         }
 
         /***************************************************/
