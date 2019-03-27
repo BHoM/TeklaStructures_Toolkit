@@ -64,7 +64,7 @@ namespace BH.Adapter.Tekla
         /***************************************************/
 
         //Change from object to the index type used by the specific software
-        private Dictionary<Type, object> m_indexDict = new Dictionary<Type, object>();
+        private Dictionary<Type, int> m_indexDict = new Dictionary<Type, int>();
 
 
         /***************************************************/
