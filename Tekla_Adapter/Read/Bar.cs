@@ -89,6 +89,7 @@ namespace BH.Adapter.Tekla
                 bhBar.StartNode = tsBeam.StartPoint.ToBHoMNode();
                 bhBar.EndNode = tsBeam.EndPoint.ToBHoMNode();
                 bhBar.Name = tsBeam.Name;
+                bhBar.CustomData[AdapterId] = tsBeam.Identifier.ID;
                 //bhBar.SectionProperty = tsBeam.Profile.ToBHoM();// not implemented yet
 
                 bhBarList.Add(bhBar);
