@@ -52,7 +52,7 @@ namespace BH.Adapter.Tekla
                     m_ComponentEnumerator = m_CatalogHandler.GetComponentItems();
                     m_ProfileEnumerator = m_CatalogHandler.GetProfileItems();
                     m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
-
+                    
                 }
                 else
                 {
