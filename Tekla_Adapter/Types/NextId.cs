@@ -26,6 +26,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BH.oM.Structure.Elements;
+using Tekla.Structures.Model;
+
+
 namespace BH.Adapter.Tekla
 {
     public partial class TeklaAdapter
@@ -53,6 +57,8 @@ namespace BH.Adapter.Tekla
             else
             {
                 index = 0;//Insert code to get the next index of the specific type
+                //m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM) - - - - get the last used id some how ...???
+
             }
 
             m_indexDict[objectType] = index;
@@ -68,5 +74,6 @@ namespace BH.Adapter.Tekla
 
 
         /***************************************************/
+
     }
 }

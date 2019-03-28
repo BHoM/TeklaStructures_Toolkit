@@ -53,7 +53,7 @@ namespace BH.Adapter.Tekla
             foreach (Bar bar in bars)
             {
                 //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
-                object barId = bar.CustomData[AdapterId];
+                int barId = (int)bar.CustomData[AdapterId];
                 //If also the default implmentation for the DependencyTypes is used,
                 //one can from here get the id's of the subobjects by calling (cast into applicable type used by the software): 
                 object startNodeId = bar.StartNode.CustomData[AdapterId];
@@ -63,7 +63,7 @@ namespace BH.Adapter.Tekla
                 Beam tsBeam = new Beam();
                 tsBeam.StartPoint = bar.StartNode.ToTeklaPoint();
                 tsBeam.EndPoint = bar.EndNode.ToTeklaPoint();
-                tsBeam.Identifier = new Identifier();//create from barId if is int
+                tsBeam.Identifier = new Identifier(barId);//create from barId if is int
                 tsBeam.Profile.ProfileString = "SHS150*150*10";// profileName; //<--- this looks like the minimum needed but would be better to set the actual profile
 
                 if (!tsBeam.Insert())
