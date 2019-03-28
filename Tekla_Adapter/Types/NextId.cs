@@ -53,16 +53,56 @@ namespace BH.Adapter.Tekla
                 //If possible to find the next index based on the previous one (for example index++ for an int based index system) do it here
 
                 index++;
+                m_indexDict[objectType] = index;
+
             }
             else
             {
-                index = 0;//Insert code to get the next index of the specific type
-                //m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM) - - - - get the last used id some how ...???
+                //index = 5000;//Insert code to get the next index of the specific type
+                index = GetLastIdOfType(objectType) + 1;
+                m_indexDict[objectType] = index;
 
             }
 
             m_indexDict[objectType] = index;
             return index;
+        }
+
+
+        private int GetLastIdOfType(Type objectType)
+        {
+            int lastId;
+            string typeString = objectType.ToString();
+
+            switch (typeString)
+            {
+                case "Node":
+                    lastId = 0;// --- not needed ? only for analytical node...?
+                    break;
+
+                case "Bar":
+                    foreach (ModelObject m in m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM))
+                    {
+                        Beam b = m as Beam;
+                        lastId = b.Identifier.ID;
+                        //get highest id value
+                    }
+
+                    lastId = 5000;
+                    break;
+
+                case "Material":
+                    lastId = 0;    
+                    break;
+                case "SectionProperty":
+                    lastId = 0;
+                    break;
+
+                default:
+                    lastId = 0;//<---- log error
+                    break;
+            }
+            return lastId;
         }
 
         /***************************************************/

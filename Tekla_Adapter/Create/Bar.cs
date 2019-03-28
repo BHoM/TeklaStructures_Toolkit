@@ -63,7 +63,7 @@ namespace BH.Adapter.Tekla
                 Beam tsBeam = new Beam();
                 tsBeam.StartPoint = bar.StartNode.ToTeklaPoint();
                 tsBeam.EndPoint = bar.EndNode.ToTeklaPoint();
-                tsBeam.Identifier = new Identifier(barId);//create from barId if is int
+                tsBeam.Identifier = new Identifier(barId);
                 tsBeam.Profile.ProfileString = "SHS150*150*10";// profileName; //<--- this looks like the minimum needed but would be better to set the actual profile
 
                 if (!tsBeam.Insert())
