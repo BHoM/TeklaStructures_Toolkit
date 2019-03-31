@@ -29,5 +29,10 @@ namespace BH.Engine.Tekla
         {
             return new tsGeo.Point(node.Coordinates.Origin.X, node.Coordinates.Origin.Y, node.Coordinates.Origin.Z);
         }
+
+        public static tsGeo.Point ToTekla(this BH.oM.Geometry.Point point)
+        {
+            return new tsGeo.Point(point.X, point.Y, point.Z);
+        }
     }
 }

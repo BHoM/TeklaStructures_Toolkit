@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Create\Bar.cs" />
+    <Compile Include="Create\FramingElement.cs" />
     <Compile Include="Create\Material.cs" />
     <Compile Include="Create\Node.cs" />
     <Compile Include="Create\SectionProperty.cs" />

@@ -56,9 +56,9 @@ namespace BH.Adapter.Tekla
                 int barId = (int)bar.CustomData[AdapterId];
                 //If also the default implmentation for the DependencyTypes is used,
                 //one can from here get the id's of the subobjects by calling (cast into applicable type used by the software): 
-                object startNodeId = bar.StartNode.CustomData[AdapterId];
-                object endNodeId = bar.EndNode.CustomData[AdapterId];
-                object SecPropId = bar.SectionProperty.CustomData[AdapterId];
+                //object startNodeId = bar.StartNode.CustomData[AdapterId];
+                //object endNodeId = bar.EndNode.CustomData[AdapterId];
+                //object SecPropId = bar.SectionProperty.CustomData[AdapterId];
 
                 Beam tsBeam = new Beam();
                 tsBeam.StartPoint = bar.StartNode.ToTeklaPoint();

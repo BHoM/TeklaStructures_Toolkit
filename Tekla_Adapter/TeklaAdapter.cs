@@ -31,7 +31,7 @@ namespace BH.Adapter.Tekla
                 Config.MergeWithComparer = true;    //Set to true to use EqualityComparers to merge objects. Example: merge nodes in the same location
                 Config.ProcessInMemory = false;     //Set to false to to update objects in the toolkit during the push
                 Config.CloneBeforePush = true;      //Set to true to clone the objects before they are being pushed through the software. Required if any modifications at all, as adding a software ID is done to the objects
-                Config.UseAdapterId = true;         //Tag objects with a software specific id in the CustomData. Requires the NextIndex method to be overridden and implemented
+                Config.UseAdapterId = false;// true;         //Tag objects with a software specific id in the CustomData. Requires the NextIndex method to be overridden and implemented
 
 
                 m_TeklaModel = new Model();
