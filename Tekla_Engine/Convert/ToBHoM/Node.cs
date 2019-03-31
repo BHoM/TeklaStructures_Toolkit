@@ -33,5 +33,10 @@ namespace BH.Engine.Tekla
             node.Coordinates = new oM.Geometry.CoordinateSystem.Cartesian(new Point() { X = tsPoint.X, Y = tsPoint.Y, Z = tsPoint.Z }, new Vector() { X = 1, Y = 0, Z = 0 }, new Vector() { X = 0, Y = 1, Z = 0 }, new Vector() { X = 0, Y = 0, Z = 1 });
             return node;
         }
+
+        public static Point ToBHoM(this tsGeo.Point point)
+        {
+            return new Point() { X = point.X, Y = point.Y, Z = point.Z };
+        }
     }
 }
