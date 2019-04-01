@@ -57,6 +57,7 @@ namespace BH.Adapter.Tekla
                 framing.LocationCurve = new oM.Geometry.Line() { Start = tsBeam.StartPoint.ToBHoM(), End = tsBeam.EndPoint.ToBHoM() };
                 framing.Name = tsBeam.Name;
                 framing.CustomData[AdapterId] = tsBeam.Identifier.ID;
+                framing.StructuralUsage = tsBeam.Type.ToBHoM();
                 //bhBar.SectionProperty = tsBeam.Profile.ToBHoM();// not implemented yet
 
                 bhFramingList.Add(framing);

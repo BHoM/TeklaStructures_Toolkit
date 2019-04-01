@@ -32,7 +32,7 @@ namespace BH.Adapter.Tekla
                 //object endNodeId = bar.EndNode.CustomData[AdapterId];
                 //object SecPropId = bar.SectionProperty.CustomData[AdapterId];
 
-                Beam tsBeam = new Beam();
+                Beam tsBeam = new Beam(framing.StructuralUsage.ToTekla());//new Beam();
                 tsBeam.StartPoint = framing.LocationCurve.Start.ToTekla();
                 tsBeam.EndPoint = framing.LocationCurve.End.ToTekla();
                 tsBeam.Identifier = new Identifier(framingId);

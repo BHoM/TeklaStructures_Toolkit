@@ -129,7 +129,9 @@
   <ItemGroup>
     <Compile Include="Convert\AdapterId.cs" />
     <Compile Include="Convert\ToBHoM\Node.cs" />
+    <Compile Include="Convert\ToBHoM\StructuralType.cs" />
     <Compile Include="Convert\ToTekla\Node.cs" />
+    <Compile Include="Convert\ToTekla\StructuralType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
