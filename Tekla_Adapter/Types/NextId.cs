@@ -71,7 +71,7 @@ namespace BH.Adapter.Tekla
 
         private int GetLastIdOfType(Type objectType)
         {
-            int lastId;
+            int lastId=0;
             string typeString = objectType.ToString();
 
             switch (typeString)
@@ -80,11 +80,11 @@ namespace BH.Adapter.Tekla
                     lastId = 0;// --- not needed ? only for analytical node...?
                     break;
 
-                case "Bar":
+                case "FramingElement":
                     foreach (ModelObject m in m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM))
                     {
                         Beam b = m as Beam;
-                        lastId = b.Identifier.ID;
+                        lastId = b.Identifier.ID > lastId ? b.Identifier.ID : lastId;
                         //get highest id value
                     }
 

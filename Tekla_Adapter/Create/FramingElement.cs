@@ -18,7 +18,7 @@ namespace BH.Adapter.Tekla
 {
     public partial class TeklaAdapter
     {
-        private bool CreateFramingElements(IEnumerable<FramingElement> framingElements)
+        private bool CreateCollection(IEnumerable<FramingElement> framingElements)
         {
             bool success = true;
 
