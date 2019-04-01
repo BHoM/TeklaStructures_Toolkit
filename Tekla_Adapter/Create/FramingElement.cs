@@ -36,9 +36,16 @@ namespace BH.Adapter.Tekla
                 tsBeam.StartPoint = framing.LocationCurve.Start.ToTekla();
                 tsBeam.EndPoint = framing.LocationCurve.End.ToTekla();
                 tsBeam.Identifier = new Identifier(framingId);
+                tsBeam.Name = framing.Name;
+                tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
+                tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
+
                 //tsBeam.Type = framing.StructuralUsage.ToTekla();
 
-                tsBeam.Profile.ProfileString = "SHS150*150*10";// profileName; //<--- this looks like the minimum needed but would be better to set the actual profile
+                Profile p = new Profile();
+
+
+                tsBeam.Profile.ProfileString = "HEA320";//"SHS150*150*10";// profileName; //<--- this looks like the minimum needed but would be better to set the actual profile
 
                 if (!tsBeam.Insert())
                     success = false;

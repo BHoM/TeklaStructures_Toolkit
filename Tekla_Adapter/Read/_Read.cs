@@ -43,6 +43,7 @@ namespace BH.Adapter.Tekla
         {
             //Main dispatcher method.
             //Choose what to pull out depending on the type.
+
             if (type == typeof(Node))
                 return ReadNodes(ids as dynamic);
             else if (type == typeof(Bar))
@@ -51,6 +52,9 @@ namespace BH.Adapter.Tekla
                 return ReadSectionProperties(ids as dynamic);
             else if (type == typeof(Material))
                 return ReadMaterials(ids as dynamic);
+            else if (type == typeof(FramingElement))
+                return ReadFramingElements(ids as dynamic);
+
 
             return new List<IBHoMObject>();
         }
