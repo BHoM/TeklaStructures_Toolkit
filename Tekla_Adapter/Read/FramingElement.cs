@@ -58,8 +58,7 @@ namespace BH.Adapter.Tekla
                 framing.Name = tsBeam.Name;
                 framing.CustomData[AdapterId] = tsBeam.Identifier.ID;
                 framing.StructuralUsage = tsBeam.Type.ToBHoM();
-                
-                //bhBar.SectionProperty = tsBeam.Profile.ToBHoM();// not implemented yet
+                //framing.Property = tsBeam.Profile.ToBHoM();// not implemented yet - should only be added when ready for analytical elements
 
                 bhFramingList.Add(framing);
             }

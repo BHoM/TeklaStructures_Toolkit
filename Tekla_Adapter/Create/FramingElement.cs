@@ -40,17 +40,17 @@ namespace BH.Adapter.Tekla
                 tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
                 tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
 
-                tsBeam.Profile.ProfileString = "HEA320";
+                if (m_ProfileLibrary.Contains(framing.Property.Name))
+                {
+                    tsBeam.Profile.ProfileString = framing.Property.Name;
+                }
+                else
+                {
+                    //add warning that profile does not exist and standard section has been used
+                    Engine.Reflection.Compute.RecordWarning("Profile " + framing.Property.Name + " was not found in library - replaced with: " + m_ProfileLibrary[0]);
 
-                //if (m_ProfileLibrary.Contains(framing.Property.Name))
-                //{
-                //    tsBeam.Profile.ProfileString = framing.Property.Name;
-                //}
-                //else
-                //{
-                //    //add warning that profile does not exist and standard section has been used
-                //    tsBeam.Profile.ProfileString = m_ProfileLibrary[0];// "HEA320";
-                //}
+                    tsBeam.Profile.ProfileString = m_ProfileLibrary[0];// "HEA320";
+                }
 
                 if (!tsBeam.Insert())
                     success = false;

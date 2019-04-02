@@ -57,18 +57,8 @@ namespace BH.Adapter.Tekla
                     while(profileEnumerator.MoveNext())
                     {
                         LibraryProfileItem profileItem = profileEnumerator.Current as LibraryProfileItem;
-                        try
-                        {
-                            if (profileItem != null && !string.IsNullOrEmpty(profileItem.ProfileName))
-                                m_ProfileLibrary.Add(profileItem.ProfileName);
-
-                        }
-                        catch (Exception)
-                        {
-
-                            throw;
-                        }
-
+                        if (profileItem != null && !string.IsNullOrEmpty(profileItem.ProfileName))
+                            m_ProfileLibrary.Add(profileItem.ProfileName);
                     }
 
                     m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
