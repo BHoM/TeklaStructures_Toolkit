@@ -36,6 +36,8 @@ namespace BH.Adapter.Tekla
 
                 m_TeklaModel = new Model();
                 m_CatalogHandler = new CatalogHandler();
+                m_ProfileLibrary = new List<string>();
+
 
                 if (m_TeklaModel.GetConnectionStatus())
                 {
@@ -51,14 +53,26 @@ namespace BH.Adapter.Tekla
                 {
                     m_ComponentEnumerator = m_CatalogHandler.GetComponentItems();
 
-                    //ProfileItemEnumerator profileEnumerator = m_CatalogHandler.GetProfileItems();
-                    //while (profileEnumerator.MoveNext())
-                    //{
-                    //    LibraryProfileItem profileItem = profileEnumerator.Current as LibraryProfileItem;
-                    //    m_ProfileLibrary.Add(profileItem.ProfileName);
-                    //}
-                    //m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
-                    
+                    ProfileItemEnumerator profileEnumerator = m_CatalogHandler.GetProfileItems();
+                    while(profileEnumerator.MoveNext())
+                    {
+                        LibraryProfileItem profileItem = profileEnumerator.Current as LibraryProfileItem;
+                        try
+                        {
+                            if (profileItem != null && !string.IsNullOrEmpty(profileItem.ProfileName))
+                                m_ProfileLibrary.Add(profileItem.ProfileName);
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+
+                    }
+
+                    m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
+
                 }
                 else
                 {
@@ -84,7 +98,7 @@ namespace BH.Adapter.Tekla
         private CatalogHandler m_CatalogHandler;
         private ModelObjectSelector m_ObjectSelector;
         private ComponentItemEnumerator m_ComponentEnumerator;
-        //private List<string> m_ProfileLibrary = new List<string>();//---There is curently no point in storing a dictionary with the profile properties; only name is used!
+        private List<string> m_ProfileLibrary;//---There is curently no point in storing a dictionary with the profile properties; only name is used!
         private MaterialItemEnumerator m_MaterialEnumerator;
 
         
