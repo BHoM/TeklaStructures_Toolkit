@@ -32,7 +32,7 @@ namespace BH.Adapter.Tekla
                 //object endNodeId = bar.EndNode.CustomData[AdapterId];
                 //object SecPropId = bar.SectionProperty.CustomData[AdapterId];
 
-                Beam tsBeam = new Beam(framing.StructuralUsage.ToTekla());//new Beam();
+                Beam tsBeam = new Beam(framing.StructuralUsage.ToTekla());
                 tsBeam.StartPoint = framing.LocationCurve.Start.ToTekla();
                 tsBeam.EndPoint = framing.LocationCurve.End.ToTekla();
                 tsBeam.Identifier = new Identifier(framingId);
@@ -40,12 +40,17 @@ namespace BH.Adapter.Tekla
                 tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
                 tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
 
-                //tsBeam.Type = framing.StructuralUsage.ToTekla();
+                tsBeam.Profile.ProfileString = "HEA320";
 
-                Profile p = new Profile();
-
-
-                tsBeam.Profile.ProfileString = "HEA320";//"SHS150*150*10";// profileName; //<--- this looks like the minimum needed but would be better to set the actual profile
+                //if (m_ProfileLibrary.Contains(framing.Property.Name))
+                //{
+                //    tsBeam.Profile.ProfileString = framing.Property.Name;
+                //}
+                //else
+                //{
+                //    //add warning that profile does not exist and standard section has been used
+                //    tsBeam.Profile.ProfileString = m_ProfileLibrary[0];// "HEA320";
+                //}
 
                 if (!tsBeam.Insert())
                     success = false;

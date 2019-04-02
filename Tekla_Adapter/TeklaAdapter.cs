@@ -50,8 +50,14 @@ namespace BH.Adapter.Tekla
                 if (m_CatalogHandler.GetConnectionStatus())
                 {
                     m_ComponentEnumerator = m_CatalogHandler.GetComponentItems();
-                    m_ProfileEnumerator = m_CatalogHandler.GetProfileItems();
-                    m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
+
+                    //ProfileItemEnumerator profileEnumerator = m_CatalogHandler.GetProfileItems();
+                    //while (profileEnumerator.MoveNext())
+                    //{
+                    //    LibraryProfileItem profileItem = profileEnumerator.Current as LibraryProfileItem;
+                    //    m_ProfileLibrary.Add(profileItem.ProfileName);
+                    //}
+                    //m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
                     
                 }
                 else
@@ -78,7 +84,7 @@ namespace BH.Adapter.Tekla
         private CatalogHandler m_CatalogHandler;
         private ModelObjectSelector m_ObjectSelector;
         private ComponentItemEnumerator m_ComponentEnumerator;
-        private ProfileItemEnumerator m_ProfileEnumerator;
+        //private List<string> m_ProfileLibrary = new List<string>();//---There is curently no point in storing a dictionary with the profile properties; only name is used!
         private MaterialItemEnumerator m_MaterialEnumerator;
 
         
