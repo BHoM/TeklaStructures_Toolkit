@@ -132,12 +132,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Create\Bar.cs" />
+    <Compile Include="Create\Connection.cs" />
     <Compile Include="Create\FramingElement.cs" />
     <Compile Include="Create\Material.cs" />
     <Compile Include="Create\Node.cs" />
     <Compile Include="Create\SectionProperty.cs" />
     <Compile Include="Create\_Create.cs" />
     <Compile Include="Delete\_Delete.cs" />
+    <Compile Include="Read\Connection.cs" />
     <Compile Include="Read\FramingElement.cs" />
     <Compile Include="Types\NextId.cs" />
     <Compile Include="Read\Bar.cs" />
@@ -156,6 +158,10 @@
       <Project>{625C4A3B-A0AB-4B29-B289-4C439B565EFF}</Project>
       <Name>Tekla_Engine</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Tekla_oM\Tekla_oM.csproj">
+      <Project>{f55cc8a5-44cb-4333-bc8a-a0eb6775b1a8}</Project>
+      <Name>Tekla_oM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
