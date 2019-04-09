@@ -53,6 +53,8 @@ namespace BH.Adapter.Tekla
                 return ReadMaterials(ids as dynamic);
             else if (type == typeof(FramingElement))
                 return ReadFramingElements(ids as dynamic);
+            else if (type == typeof(Connection))
+                return ReadConnections(ids as dynamic);
 
             return new List<IBHoMObject>();
         }
