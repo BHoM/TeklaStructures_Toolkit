@@ -20,6 +20,8 @@ namespace BH.Adapter.Tekla
         /**** Constructors                              ****/
         /***************************************************/
 
+        public List<string> connectionLibrary { get; set; } = new List<string>();
+
         //Add any applicable constructors here, such as linking to a specific file or anything else as well as linking to that file through the (if existing) com link via the API
         public TeklaAdapter(string filePath = "", bool active = false)
         {
@@ -36,11 +38,13 @@ namespace BH.Adapter.Tekla
 
                 m_TeklaModel = new Model();
                 m_CatalogHandler = new CatalogHandler();
+                m_ProfileLibrary = new List<string>();
+                m_ConnectionLibrary = new Dictionary<string, int>();
+
 
                 if (m_TeklaModel.GetConnectionStatus())
                 {
                     m_ObjectSelector = m_TeklaModel.GetModelObjectSelector();
-
                 }
                 else
                 {
@@ -50,9 +54,39 @@ namespace BH.Adapter.Tekla
                 if (m_CatalogHandler.GetConnectionStatus())
                 {
                     m_ComponentEnumerator = m_CatalogHandler.GetComponentItems();
-                    m_ProfileEnumerator = m_CatalogHandler.GetProfileItems();
                     m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
-                    
+
+                    // build profile library
+                    ProfileItemEnumerator profileEnumerator = m_CatalogHandler.GetProfileItems();
+                    while (profileEnumerator.MoveNext())
+                    {
+                        LibraryProfileItem profileItem = profileEnumerator.Current as LibraryProfileItem;
+                        if (profileItem != null && !string.IsNullOrEmpty(profileItem.ProfileName))
+                            m_ProfileLibrary.Add(profileItem.ProfileName);
+                    }
+
+                    //build connection library
+                    while (m_ComponentEnumerator.MoveNext())
+                    {
+                        ComponentItem item = m_ComponentEnumerator.Current as ComponentItem;
+
+                        if (item.Type == ComponentItem.ComponentTypeEnum.CONNECTION)
+                        {
+                            // NOTE 
+                            // item.Name is mostly empty. when it is not empty is a duplicate of item.UIName and in this case the item.Nunber is -200000
+                            // examples in documentation show connections created from item.Number but it could be that when this is -200000 it can be created from item.Name
+                            if (!m_ConnectionLibrary.ContainsKey(item.UIName))
+                            {
+                                m_ConnectionLibrary.Add(item.UIName, item.Number);
+                            }
+                            else
+                            {
+                                // add some warning ! ! ! ! ! ! 
+                            }
+                        }
+                    }
+
+                    connectionLibrary.AddRange(m_ConnectionLibrary.Keys.ToList());
                 }
                 else
                 {
@@ -78,10 +112,11 @@ namespace BH.Adapter.Tekla
         private CatalogHandler m_CatalogHandler;
         private ModelObjectSelector m_ObjectSelector;
         private ComponentItemEnumerator m_ComponentEnumerator;
-        private ProfileItemEnumerator m_ProfileEnumerator;
+        private List<string> m_ProfileLibrary;//---There is curently no point in storing a dictionary with the profile properties; only name is used to create framing elements
+        private Dictionary<string, int> m_ConnectionLibrary;
         private MaterialItemEnumerator m_MaterialEnumerator;
 
-        
+
         /***************************************************/
 
 
