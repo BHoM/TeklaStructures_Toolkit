@@ -132,11 +132,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Create\Bar.cs" />
+    <Compile Include="Create\FramingElement.cs" />
     <Compile Include="Create\Material.cs" />
     <Compile Include="Create\Node.cs" />
     <Compile Include="Create\SectionProperty.cs" />
     <Compile Include="Create\_Create.cs" />
     <Compile Include="Delete\_Delete.cs" />
+    <Compile Include="Read\FramingElement.cs" />
     <Compile Include="Types\NextId.cs" />
     <Compile Include="Read\Bar.cs" />
     <Compile Include="Read\Material.cs" />

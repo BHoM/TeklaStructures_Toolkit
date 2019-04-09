@@ -33,8 +33,21 @@ namespace BH.Adapter.Tekla
                 //object SecPropId = bar.SectionProperty.CustomData[AdapterId];
 
                 Beam tsBeam = new Beam(framing.StructuralUsage.ToTekla());
-                tsBeam.StartPoint = framing.LocationCurve.Start.ToTekla();
-                tsBeam.EndPoint = framing.LocationCurve.End.ToTekla();
+
+                if (framing.LocationCurve.GetType() == typeof(BH.oM.Geometry.Line))
+                {
+                    BH.oM.Geometry.Line centreLine = framing.LocationCurve as BH.oM.Geometry.Line;
+                    tsBeam.StartPoint = centreLine.Start.ToTekla();
+                    tsBeam.EndPoint = centreLine.End.ToTekla();
+                }
+                else if (framing.LocationCurve.GetType() == typeof(BH.oM.Geometry.Polyline))
+                {
+                    BH.oM.Geometry.Polyline centreLine = framing.LocationCurve as BH.oM.Geometry.Polyline;
+                    tsBeam.StartPoint = centreLine.ControlPoints.First().ToTekla();
+                    tsBeam.EndPoint = centreLine.ControlPoints.Last().ToTekla();
+                    // add warning that polyline has been changed to line ! ! ! ! 
+                }
+
                 tsBeam.Identifier = new Identifier(framingId);
                 tsBeam.Name = framing.Name;
                 tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
