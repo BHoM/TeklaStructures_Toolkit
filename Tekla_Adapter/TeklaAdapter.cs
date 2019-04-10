@@ -39,6 +39,7 @@ namespace BH.Adapter.Tekla
                 m_TeklaModel = new Model();
                 m_CatalogHandler = new CatalogHandler();
                 m_ProfileLibrary = new List<string>();
+                m_MaterialLibrary = new List<string>();
                 m_ConnectionLibrary = new Dictionary<string, int>();
 
 
@@ -54,7 +55,6 @@ namespace BH.Adapter.Tekla
                 if (m_CatalogHandler.GetConnectionStatus())
                 {
                     m_ComponentEnumerator = m_CatalogHandler.GetComponentItems();
-                    m_MaterialEnumerator = m_CatalogHandler.GetMaterialItems();
 
                     // build profile library
                     ProfileItemEnumerator profileEnumerator = m_CatalogHandler.GetProfileItems();
@@ -65,11 +65,19 @@ namespace BH.Adapter.Tekla
                             m_ProfileLibrary.Add(profileItem.ProfileName);
                     }
 
+                    // build material library
+                    MaterialItemEnumerator materialEnumerator = m_CatalogHandler.GetMaterialItems();
+                    while (materialEnumerator.MoveNext())
+                    {
+                        MaterialItem materialItem = materialEnumerator.Current as MaterialItem;
+                        if (materialItem != null && !string.IsNullOrEmpty(materialItem.MaterialName))
+                            m_MaterialLibrary.Add(materialItem.MaterialName);
+                    }
+
                     //build connection library
                     while (m_ComponentEnumerator.MoveNext())
                     {
                         ComponentItem item = m_ComponentEnumerator.Current as ComponentItem;
-
                         if (item.Type == ComponentItem.ComponentTypeEnum.CONNECTION)
                         {
                             // NOTE 
@@ -85,8 +93,8 @@ namespace BH.Adapter.Tekla
                             }
                         }
                     }
-
                     connectionLibrary.AddRange(m_ConnectionLibrary.Keys.ToList());
+
                 }
                 else
                 {
@@ -95,7 +103,6 @@ namespace BH.Adapter.Tekla
 
 
             }
-
         }
 
 
@@ -104,17 +111,14 @@ namespace BH.Adapter.Tekla
         /**** Private  Fields                           ****/
         /***************************************************/
 
-        //Add any comlink object as a private field here, example named:
-
-        //private SoftwareComLink m_softwareNameCom;
-
         private Model m_TeklaModel;
         private CatalogHandler m_CatalogHandler;
         private ModelObjectSelector m_ObjectSelector;
         private ComponentItemEnumerator m_ComponentEnumerator;
         private List<string> m_ProfileLibrary;//---There is curently no point in storing a dictionary with the profile properties; only name is used to create framing elements
         private Dictionary<string, int> m_ConnectionLibrary;
-        private MaterialItemEnumerator m_MaterialEnumerator;
+        private List<string> m_MaterialLibrary;//---There is curently no point in storing a dictionary with Material properties; only name is used to create framing elements
+
 
 
         /***************************************************/
