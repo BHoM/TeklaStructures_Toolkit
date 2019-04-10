@@ -54,8 +54,10 @@ namespace BH.Adapter.Tekla
 
                 tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
                 tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
-                tsBeam.Position.Rotation = Position.RotationEnum.FRONT; /// -- it is unclear what changing this enum actually does; 
-                tsBeam.Position.RotationOffset = framingProperty.OrientationAngle * (180 / Math.PI);
+
+                //tsBeam.Position.Rotation = Position.RotationEnum.FRONT; /// -- it is unclear what changing this enum actually does; 
+                //tsBeam.Position.RotationOffset = framingProperty.OrientationAngle * (180 / Math.PI) * (-1);
+
 
                 if (m_ProfileLibrary.Contains(framing.Property.Name))
                 {
