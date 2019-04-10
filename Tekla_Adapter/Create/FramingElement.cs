@@ -50,13 +50,18 @@ namespace BH.Adapter.Tekla
 
                 tsBeam.Identifier = new Identifier(framingId);
                 tsBeam.Name = framing.Name;
-                BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty framingProperty = framing.Property as BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty; 
 
                 tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
                 tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
 
+                BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty framingProperty = framing.Property as BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty;
                 //tsBeam.Position.Rotation = Position.RotationEnum.FRONT; /// -- it is unclear what changing this enum actually does; 
-                //tsBeam.Position.RotationOffset = framingProperty.OrientationAngle * (180 / Math.PI) * (-1);
+                //tsBeam.Position.RotationOffset = framingProperty.OrientationAngle * (180 / Math.PI);
+
+                if (m_MaterialLibrary.Contains(framingProperty.SectionProperty.Material.Name))
+                    tsBeam.Material.MaterialString = framingProperty.SectionProperty.Material.Name;
+                else
+                    tsBeam.Material.MaterialString = "S355";
 
 
                 if (m_ProfileLibrary.Contains(framing.Property.Name))
@@ -67,8 +72,7 @@ namespace BH.Adapter.Tekla
                 {
                     //add warning that profile does not exist and standard section has been used
                     Engine.Reflection.Compute.RecordWarning("Profile " + framing.Property.Name + " was not found in library - replaced with: " + m_ProfileLibrary[0]);
-
-                    tsBeam.Profile.ProfileString = m_ProfileLibrary[0];// "HEA320";
+                    tsBeam.Profile.ProfileString = m_ProfileLibrary[0];
                 }
 
                 if (!tsBeam.Insert())
