@@ -19,6 +19,7 @@ namespace BH.Engine.Structure
 
         public static Connection Connection(string libraryName, List<int> connectingElementIds)
         {
+
             return new Connection() { LibraryName = libraryName, ConnectingElementIds = connectingElementIds };
         }
 

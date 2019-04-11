@@ -17,6 +17,17 @@ namespace BH.oM.Structure.Elements
 
         public List<int> ConnectingElementIds { get; set; }
 
+
+
+        public List<Plate> Plates { get; set; } = null;
+
+        public BoltGroup BoltGroup { get; set; } = null;
+
+        public List<Weld> Welds { get; set; } = null;
+
+        //public List<Cut> Cuts { get; set; } = null;
+
+
     }
 
 }
