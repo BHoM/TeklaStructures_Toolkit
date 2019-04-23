@@ -51,66 +51,18 @@ namespace BH.Adapter.Tekla
 
             bool success = true;
 
-            foreach (Connection bhConnection in connections)
+            foreach (Connection connection in connections)
             {
-                int connectionId = (int)bhConnection.CustomData[AdapterId];
-                //List<int> elementIds = new List<int>();
+                int connectionId = (int)connection.CustomData[AdapterId];
 
-                //foreach (FramingElement fe in bhConnection.ConnectingElements)
-                //    elementIds.Add((int)fe.CustomData[AdapterId]);
-
-
-                tsModel.Connection tsConnection = new tsModel.Connection();
-
-                if (m_ConnectionLibrary.ContainsKey(bhConnection.LibraryName))
+                if (m_ConnectionLibrary.ContainsKey(connection.Name))
                 {
-                    tsConnection.Name = bhConnection.LibraryName;
-                    tsConnection.Number = m_ConnectionLibrary[bhConnection.LibraryName];
+                    connectionFromLibary(connection);
                 }
                 else
                 {
-                    // add error message ! ! ! ! ! 
+                    connectionFromComponents(connection);
                 }
-
-                // ! ! ! !  ---- get connection name and number from a preloaded library ----- ! ! ! ! !
-                //con.Name = "apiCreatedConnectionTest";
-                //tsConnection.Number = 310000041;
-                tsConnection.LoadAttributesFromFile("standard");
-                tsConnection.UpVector = new tsGeo.Vector(0, 0, 1);
-                tsConnection.PositionType = PositionTypeEnum.COLLISION_PLANE;
-
-                //set primary connecting element
-                tsModel.Beam primary = m_TeklaModel.SelectModelObject(new Identifier(bhConnection.ConnectingElementIds[0])) as tsModel.Beam;
-                tsConnection.SetPrimaryObject(primary);
-
-                //set secondary connecting elements
-                if (bhConnection.ConnectingElementIds.Count == 2)
-                {
-                    tsModel.Beam secondary = m_TeklaModel.SelectModelObject(new Identifier(bhConnection.ConnectingElementIds[1])) as tsModel.Beam;
-                    tsConnection.SetSecondaryObject(secondary);// -- it might be that .SetSecondaryObjects() makes this unneccessary
-                }
-                else if (bhConnection.ConnectingElementIds.Count > 2)
-                {
-                    List<tsModel.Beam> beamList = new List<tsModel.Beam>();
-
-                    for (int i = 1; i < bhConnection.ConnectingElementIds.Count; i++)
-                    {
-                        beamList.Add(m_TeklaModel.SelectModelObject(new Identifier(bhConnection.ConnectingElementIds[i])) as tsModel.Beam);
-                    }
-                    tsConnection.SetSecondaryObjects(new ArrayList(beamList));
-                }
-
-                //override any attributes set by '.LoadAttributesFromFile'
-                //con.SetAttribute("e1", 12.5);
-                //con.SetAttribute("e2", "something");
-                //con.SetAttribute("e3", "something else");
-
-
-                Hashtable userProps = new Hashtable();
-                tsConnection.GetDoubleUserProperties(ref userProps);
-
-                if (!tsConnection.Insert())
-                    success = false;
             }
 
             return success;
@@ -118,6 +70,64 @@ namespace BH.Adapter.Tekla
         }
 
         /***************************************************/
+        //Private Methods
+        /***************************************************/
 
+        private bool connectionFromLibary(Connection conn)
+        {
+            bool success = true;
+
+            tsModel.Connection tsConnection = new tsModel.Connection();
+            tsConnection.Name = conn.Name;
+            tsConnection.Number = m_ConnectionLibrary[conn.Name];
+
+            // ! ! ! !  ---- get connection name and number from a preloaded library ----- ! ! ! ! !
+            //con.Name = "apiCreatedConnectionTest";
+            //tsConnection.Number = 310000041;
+            tsConnection.LoadAttributesFromFile("standard");
+            tsConnection.UpVector = new tsGeo.Vector(0, 0, 1);
+            tsConnection.PositionType = PositionTypeEnum.COLLISION_PLANE;
+
+            //set primary connecting element
+            tsModel.Beam primary = m_TeklaModel.SelectModelObject(new Identifier(conn.ConnectingElementIds[0])) as tsModel.Beam;
+            tsConnection.SetPrimaryObject(primary);
+
+            //set secondary connecting elements
+            if (conn.ConnectingElementIds.Count == 2)
+            {
+                tsModel.Beam secondary = m_TeklaModel.SelectModelObject(new Identifier(conn.ConnectingElementIds[1])) as tsModel.Beam;
+                tsConnection.SetSecondaryObject(secondary);// -- it might be that .SetSecondaryObjects() makes this unneccessary
+            }
+            else if (conn.ConnectingElementIds.Count > 2)
+            {
+                List<tsModel.Beam> beamList = new List<tsModel.Beam>();
+
+                for (int i = 1; i < conn.ConnectingElementIds.Count; i++)
+                {
+                    beamList.Add(m_TeklaModel.SelectModelObject(new Identifier(conn.ConnectingElementIds[i])) as tsModel.Beam);
+                }
+                tsConnection.SetSecondaryObjects(new ArrayList(beamList));
+            }
+
+            Hashtable userProps = new Hashtable();
+            tsConnection.GetDoubleUserProperties(ref userProps);
+
+            if (!tsConnection.Insert())
+                success = false;
+            return success;
+        }
+
+        /***************************************************/
+
+        private bool connectionFromComponents(Connection conn)
+        {
+            bool success = true;
+
+            Create(conn.Plates);
+
+
+
+            return success;
+        }
     }
 }

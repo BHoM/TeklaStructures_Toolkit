@@ -21,6 +21,7 @@ namespace BH.Adapter.Tekla
         /***************************************************/
 
         public List<string> connectionLibrary { get; set; } = new List<string>();
+        public List<string> m_ProfileLibrary { get; set; } = new List<string>();//---There is curently no point in storing a dictionary with the profile properties; only name is used to create framing elements
 
         //Add any applicable constructors here, such as linking to a specific file or anything else as well as linking to that file through the (if existing) com link via the API
         public TeklaAdapter(string filePath = "", bool active = false)
@@ -73,7 +74,7 @@ namespace BH.Adapter.Tekla
                         if (materialItem != null && !string.IsNullOrEmpty(materialItem.MaterialName))
                             m_MaterialLibrary.Add(materialItem.MaterialName);
                     }
-
+                   
                     //build connection library
                     while (m_ComponentEnumerator.MoveNext())
                     {
@@ -115,7 +116,6 @@ namespace BH.Adapter.Tekla
         private CatalogHandler m_CatalogHandler;
         private ModelObjectSelector m_ObjectSelector;
         private ComponentItemEnumerator m_ComponentEnumerator;
-        private List<string> m_ProfileLibrary;//---There is curently no point in storing a dictionary with the profile properties; only name is used to create framing elements
         private Dictionary<string, int> m_ConnectionLibrary;
         private List<string> m_MaterialLibrary;//---There is curently no point in storing a dictionary with Material properties; only name is used to create framing elements
 

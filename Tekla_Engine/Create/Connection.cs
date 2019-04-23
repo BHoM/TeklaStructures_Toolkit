@@ -17,10 +17,10 @@ namespace BH.Engine.Structure
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static Connection Connection(string libraryName, List<int> connectingElementIds)
+        public static Connection Connection(string name, List<int> connectingElementIds, List<PanelPlanar> plates)
         {
 
-            return new Connection() { LibraryName = libraryName, ConnectingElementIds = connectingElementIds };
+            return new Connection() { Name = name, ConnectingElementIds = connectingElementIds,  Plates = plates };
         }
 
         /***************************************************/

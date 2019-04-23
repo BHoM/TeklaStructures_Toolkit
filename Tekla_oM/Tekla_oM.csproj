@@ -108,9 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bolt.cs" />
-    <Compile Include="BoltGroup.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="Plate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Weld.cs" />
   </ItemGroup>
