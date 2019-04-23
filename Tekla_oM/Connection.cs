@@ -13,21 +13,15 @@ namespace BH.oM.Structure.Elements
 {
     public class Connection : BHoMObject
     {
-        public string LibraryName { get; set; }
+        public List<int> ConnectingElementIds { get; set; } = null;
 
-        public List<int> ConnectingElementIds { get; set; }
+        public List<PanelPlanar> Plates { get; set; } = null;
 
-
-
-        public List<Plate> Plates { get; set; } = null;
-
-        public BoltGroup BoltGroup { get; set; } = null;
+        public List<Bolt> Bolts { get; set; } = null;
 
         public List<Weld> Welds { get; set; } = null;
 
-        //public List<Cut> Cuts { get; set; } = null;
-
-
+        public List<PolySurface> Cuts { get; set; } = null;
     }
 
 }

@@ -14,13 +14,13 @@ namespace BH.oM.Structure.Elements
 {
     public class Weld : BHoMObject
     {
-        // connecting parts (plate/framingElement/...)
+
+        public ICurve weldPath { get; set; }
+
 
         // WeldContour Enum (none/flush/convex/concave/...)
 
         // Pitch double
-
-        // Position (Line ??)
 
         // WeldProcess Enum (shielded metal/submerged arc/gas metal arc/flux cored arc/electroslag/electrogas)
 
