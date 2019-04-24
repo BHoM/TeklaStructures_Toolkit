@@ -31,5 +31,19 @@ namespace BH.Engine.Tekla
             tsGeo.Point tsPoint = new tsGeo.Point() { X = point.X, Y = point.Y, Z = point.Z };
             return tsPoint;
         }
+
+        public static tsGeo.GeometricPlane ToTekla(this Plane plane)
+        {
+            tsGeo.GeometricPlane geoPlane = new tsGeo.GeometricPlane() { Normal = BH.Engine.Tekla.Convert.ToTekla(plane.Normal) , Origin = BH.Engine.Tekla.Convert.ToTekla(plane.Origin) };
+            
+            return geoPlane;
+        }
+
+        public static tsGeo.Vector ToTekla(this Vector vect)
+        {
+            tsGeo.Vector tsVector = new tsGeo.Vector() {X = vect.X, Y = vect.Y , Z = vect.Z  };
+            
+            return tsVector;
+        }
     }
 }

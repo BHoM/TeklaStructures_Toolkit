@@ -45,8 +45,6 @@ namespace BH.Adapter.Tekla
             //Choose what to pull out depending on the type.
             if (type == typeof(Node))
                 return ReadNodes(ids as dynamic);
-            else if (type == typeof(Bar))
-                return ReadBars(ids as dynamic);
             else if (type == typeof(ISectionProperty) || type.GetInterfaces().Contains(typeof(ISectionProperty)))
                 return ReadSectionProperties(ids as dynamic);
             else if (type == typeof(Material))

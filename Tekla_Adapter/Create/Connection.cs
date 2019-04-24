@@ -125,7 +125,7 @@ namespace BH.Adapter.Tekla
 
             Create(conn.Plates);
 
-
+            CreateCollection(conn.Bolts);
 
             return success;
         }
