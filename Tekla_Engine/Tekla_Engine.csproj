@@ -129,12 +129,12 @@
   <ItemGroup>
     <Compile Include="Convert\AdapterId.cs" />
     <Compile Include="Convert\ToBHoM\Geometry.cs" />
-    <Compile Include="Convert\ToBHoM\Node.cs" />
     <Compile Include="Convert\ToBHoM\StructuralType.cs" />
     <Compile Include="Convert\ToTekla\Geometry.cs" />
-    <Compile Include="Convert\ToTekla\Node.cs" />
     <Compile Include="Convert\ToTekla\StructuralType.cs" />
+    <Compile Include="Create\Bolt.cs" />
     <Compile Include="Create\Connection.cs" />
+    <Compile Include="Create\Plane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

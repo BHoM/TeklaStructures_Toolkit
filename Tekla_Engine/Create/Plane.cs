@@ -7,8 +7,6 @@ using BH.oM.Structure.Properties.Constraint;
 using BH.Engine.Geometry;
 using BH.Engine.Reflection;
 
-
-
 namespace BH.Engine.Structure
 {
     public static partial class Create
@@ -17,10 +15,10 @@ namespace BH.Engine.Structure
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static Connection Connection(string name, List<int> connectingElementIds, List<PanelPlanar> plates, List<Bolt> bolts)
+        public static Plane Plane(Vector xAxis, Vector yAxis, Point origin)
         {
-
-            return new Connection() { Name = name, ConnectingElementIds = connectingElementIds,  Plates = plates, Bolts = bolts};
+                Vector normal = BH.Engine.Geometry.Query.CrossProduct(xAxis,yAxis).Normalise();
+                return new Plane { Origin = origin.Clone(), Normal = normal };
         }
 
         /***************************************************/

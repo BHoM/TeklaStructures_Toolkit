@@ -14,13 +14,11 @@ namespace BH.oM.Structure.Elements
 {
     public class Bolt : BHoMObject
     {
-        // type enum = site/Workshop/ ... 
-
-        public double Size { get; set; }
+        public double Diameter { get; set; }
 
         public string Standard { get; set; }
 
-
+        public Line Centerline { get; set; }
 
     }
 

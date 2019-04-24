@@ -31,6 +31,7 @@ using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
 using BH.oM.Common.Materials;
 using BH.Engine.Tekla;
+using BH.oM.Geometry;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
@@ -48,57 +49,22 @@ namespace BH.Adapter.Tekla
         //The List<string> in the methods below can be changed to a list of any type of identification more suitable for the toolkit
         //If no ids are provided, the convention is to return all elements of the type
 
-        private List<Bar> ReadBars(List<string> ids = null)
+        private List<BH.oM.Geometry.Plane> ReadPlane(List<BH.oM.Geometry.Plane> ids = null)
         {
-            //Tip: If the software stores depending types such as Nodes and SectionProperties in separate object tables,
-            //it might be a massive preformance boost to read in and store these properties before reading in the bars 
-            //and referenced these stored objects instead of reading them in each time.
-            //For example, a case where 1000 bars share 5 total number of different SectionProperties you want, if possible,
-            //to only read in the section properties 5 times, not 1000. This might of course vary from software to software.
+            List<BH.oM.Geometry.Plane> output = new List<BH.oM.Geometry.Plane>();
 
-            //Implement code for reading bars
-
-            List<Beam> tsBeamList = new List<Beam>();
-            List<Bar> bhBarList = new List<Bar>();
-
-            if (ids==null)
+            if (ids.Count() == 0)
             {
-                foreach(ModelObject tsObj in m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM))
-                {
-                    tsBeamList.Add(tsObj as Beam);
-                }
-
-            }
-            else
-            {
-                //there might be some efficiency gain in understanding how to use: selection with ExpressionFilter, i.e. 'm_ObjectSelector.GetObjectsByFilter()'
-                foreach (string id in ids)
-                {
-                    int idNum = System.Convert.ToInt32(id);
-                    ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(idNum));
-
-                    //missing ! ! ! check it is a beam type
-
-                    tsBeamList.Add(tsObj as Beam);
-                }
+                //WorkPlaneHandler PlaneHandler = m_TeklaModel.GetWorkPlaneHandler();
+                //TransformationPlane CurrentPlane = PlaneHandler.GetCurrentTransformationPlane();
+                //TransformationPlane t = new TransformationPlane();
+                //t.TransformationMatrixToGlobal.tran
             }
 
-            foreach (Beam tsBeam in tsBeamList)
-            {
-                Bar bhBar = new Bar();
-                bhBar.StartNode = tsBeam.StartPoint.ToBHoMNode();
-                bhBar.EndNode = tsBeam.EndPoint.ToBHoMNode();
-                bhBar.Name = tsBeam.Name;
-                bhBar.CustomData[AdapterId] = tsBeam.Identifier.ID;
-                //bhBar.SectionProperty = tsBeam.Profile.ToBHoM();// not implemented yet
 
-                bhBarList.Add(bhBar);
-            }
-
-            return bhBarList;
+            return output;
         }
 
         /***************************************************/
-
     }
 }
