@@ -133,12 +133,13 @@
   <ItemGroup>
     <Compile Include="Create\Bolt.cs" />
     <Compile Include="Create\Connection.cs" />
+    <Compile Include="Create\Cut.cs" />
     <Compile Include="Create\FramingElement.cs" />
     <Compile Include="Create\ISurfaceProperty.cs" />
     <Compile Include="Create\Material.cs" />
     <Compile Include="Create\Node.cs" />
     <Compile Include="Create\PanelPlanar.cs" />
-    <Compile Include="Execute\Plane.cs" />
+    <Compile Include="Create\Weld.cs" />
     <Compile Include="Create\SectionProperty.cs" />
     <Compile Include="Create\_Create.cs" />
     <Compile Include="Delete\_Delete.cs" />
