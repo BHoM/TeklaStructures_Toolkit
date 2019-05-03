@@ -30,7 +30,6 @@ using BH.oM.Structure.Properties;
 using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
 using BH.Engine.Tekla;
-using  BH.oM.Geometry;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
@@ -45,16 +44,32 @@ namespace BH.Adapter.Tekla
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool ChangeWorkPlane(BH.oM.Geometry.Plane pln)
+        private bool CreateCollection(IEnumerable<Bar> bars)
         {
+            //Code for creating a collection of bars in the software
+
             bool success = true;
 
-                WorkPlaneHandler PlaneHandler = m_TeklaModel.GetWorkPlaneHandler();
-                tsGeo.GeometricPlane tsPlane = BH.Engine.Tekla.Convert.ToTekla(pln);
+            foreach (Bar bar in bars)
+            {
+                //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
+                int barId = (int)bar.CustomData[AdapterId];
+                //If also the default implmentation for the DependencyTypes is used,
+                //one can from here get the id's of the subobjects by calling (cast into applicable type used by the software): 
+                object startNodeId = bar.StartNode.CustomData[AdapterId];
+                object endNodeId = bar.EndNode.CustomData[AdapterId];
+                object SecPropId = bar.SectionProperty.CustomData[AdapterId];
 
-                //need to revisit this - bhom definition of plan doesnt suffice needs x/y axis
-                success = PlaneHandler.SetCurrentTransformationPlane(new TransformationPlane(BH.Engine.Tekla.Convert.ToTekla(pln.Origin), new tsGeo.Vector { X = 0, Y = 0, Z = 0 }, BH.Engine.Tekla.Convert.ToTekla(pln.Normal)));
- 
+                Beam tsBeam = new Beam();
+                tsBeam.StartPoint = bar.StartNode.ToTeklaPoint();
+                tsBeam.EndPoint = bar.EndNode.ToTeklaPoint();
+                tsBeam.Identifier = new Identifier(barId);
+                tsBeam.Profile.ProfileString = "SHS150*150*10";// profileName; //<--- this looks like the minimum needed but would be better to set the actual profile
+
+                if (!tsBeam.Insert())
+                    success = false;
+            }
+
             return success;
 
         }

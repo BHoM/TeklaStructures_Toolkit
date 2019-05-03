@@ -30,10 +30,9 @@ using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
 using BH.Engine.Tekla;
 using BH.oM.Geometry;
-using BH.oM.Structure.Properties.Surface;
 
 using Tekla.Structures;
-using Tekla.Structures.Model;
+using tekmodel =  Tekla.Structures.Model;
 using tsGeo = Tekla.Structures.Geometry3d;
 
 namespace BH.Adapter.Tekla
@@ -45,44 +44,61 @@ namespace BH.Adapter.Tekla
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool CreateCollection(IEnumerable<PanelPlanar> PanelPlanar)
+        private bool CreateCollection(IEnumerable<BH.oM.Structure.Elements.Weld> welds)
         {
-            //Code for creating a collection of panel planar in the software
+            bool success = false;
 
-            bool success = true;
+            tsGeo.Point Beam1P1 = new tsGeo.Point(0, 12000, 0);
+            tsGeo.Point Beam1P2 = new tsGeo.Point(3000, 12000, 0);
 
-            foreach (PanelPlanar p in PanelPlanar)
-            {
-                ////Create a Plate Profile
-                ContourPlate contourPlate = new ContourPlate();
-                Profile pfl = new Profile();
-                foreach(Point point in Engine.Structure.Query.ControlPoints(p))
-                    contourPlate.Contour.AddContourPoint(new ContourPoint(new tsGeo.Point(point.X, point.Y, point.Z), new Chamfer()));
+            tsGeo.Point Beam2P1 = new tsGeo.Point(3000, 12000, 0);
+            tsGeo.Point Beam2P2 = new tsGeo.Point(3000, 18000, 0);
 
-                ////Check if the section property already exists, if not, create and apply
+            tekmodel.Beam Beam1 = new tekmodel.Beam(Beam1P1, Beam1P2);
+            tekmodel.Beam Beam2 = new tekmodel.Beam(Beam2P1, Beam2P2);
 
-                if (!m_ProfileLibrary.Contains(p.Property.Name))
-                {
-                    List<ISurfaceProperty> asdf = new List<ISurfaceProperty>();
-                    asdf.Add(p.Property);
-                    Create(asdf);
-                }
+            Beam1.Profile.ProfileString = "HI400-15-20*400";
+            Beam1.Finish = "PAINT";
+            Beam1.Name = "Beam 1";
+            Beam2.Profile.ProfileString = "HI300-15-20*300";
+            Beam2.Name = "Beam 2";
 
-                if (p.Property is ConstantThickness)
-                {
-                    ConstantThickness ct = (ConstantThickness) p.Property;
-                    contourPlate.Profile.ProfileString = "PL" + ct.Thickness.ToString();
-                }
+            success = !Beam1.Insert();
 
-                if (!contourPlate.Insert())
-                {
-                    success = false;
-                }
-            }
+
+          success = !Beam2.Insert();
+
+
+            Beam1.Profile.ProfileString = "HI400-15-20*400";
+            Beam1.Finish = "PAINT";
+            Beam1.Name = "Beam 1";
+            Beam2.Profile.ProfileString = "HI300-15-20*300";
+            Beam2.Name = "Beam 2";
+
+            tekmodel.Weld Weld = new tekmodel.Weld();
+            Weld.MainObject = Beam1;
+            Weld.SecondaryObject = Beam2;
+            Weld.TypeAbove = tekmodel.Weld.WeldTypeEnum.WELD_TYPE_SQUARE_GROOVE_SQUARE_BUTT;
+
+            success = !Weld.Insert();
+
+            success = !Weld.Select();
+
+                Weld.LengthAbove = 12;
+            Weld.TypeBelow = tekmodel.Weld.WeldTypeEnum.WELD_TYPE_SLOT;
+
+            success = !Weld.Modify();
+
+            //tekmodel.PolygonWeld polyWeld = new tekmodel.PolygonWeld();
+            //polyWeld.MainObject = Beam1;
+            //polyWeld.SecondaryObject = Beam2;
+            //polyWeld.TypeAbove = tekmodel.Weld.WeldTypeEnum.WELD_TYPE_SQUARE_GROOVE_SQUARE_BUTT;
+            //polyWeld.Polygon.Points.Add(new tsGeo.Point(3000, 12000, 0));
+            //polyWeld.Polygon.Points.Add(new tsGeo.Point(3000, 18000, 0));
+
+            //success = !polyWeld.Insert();
+
             return success;
         }
-
-        /***************************************************/
-
     }
 }

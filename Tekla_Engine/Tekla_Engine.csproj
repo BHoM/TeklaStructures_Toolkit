@@ -134,7 +134,9 @@
     <Compile Include="Convert\ToTekla\StructuralType.cs" />
     <Compile Include="Create\Bolt.cs" />
     <Compile Include="Create\Connection.cs" />
+    <Compile Include="Create\Cut.cs" />
     <Compile Include="Create\Plane.cs" />
+    <Compile Include="Create\Weld.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

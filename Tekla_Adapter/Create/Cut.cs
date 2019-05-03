@@ -19,6 +19,7 @@
  * You should have received a copy of the GNU Lesser General Public License     
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,12 @@ using BH.oM.Structure.Properties;
 using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
 using BH.Engine.Tekla;
-using BH.oM.Geometry;
-using BH.oM.Structure.Properties.Surface;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
 using tsGeo = Tekla.Structures.Geometry3d;
+using System.Collections;
+using BH.oM.Geometry;
 
 namespace BH.Adapter.Tekla
 {
@@ -45,44 +46,59 @@ namespace BH.Adapter.Tekla
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool CreateCollection(IEnumerable<PanelPlanar> PanelPlanar)
+        private bool CreateCollection(IEnumerable<Cut> cuts)
         {
-            //Code for creating a collection of panel planar in the software
-
             bool success = true;
 
-            foreach (PanelPlanar p in PanelPlanar)
+            foreach (Cut c in cuts)
             {
-                ////Create a Plate Profile
+                //Crete New Polygon Cut
                 ContourPlate contourPlate = new ContourPlate();
+                contourPlate.AssemblyNumber.Prefix = "XX";
+                contourPlate.AssemblyNumber.StartNumber = 1;
+                contourPlate.PartNumber.Prefix = "xx";
+                contourPlate.Name = "CUT";
+                contourPlate.Profile.ProfileString = "200";
+                contourPlate.Material.MaterialString = "ANTIMATERIAL";
+                contourPlate.Finish = "";
+                contourPlate.Class = BooleanPart.BooleanOperativeClassName;
+                contourPlate.Position.Depth = Position.DepthEnum.MIDDLE;
                 Profile pfl = new Profile();
-                foreach(Point point in Engine.Structure.Query.ControlPoints(p))
+
+                foreach (Point point in Engine.Geometry.Query.IControlPoints(c.curve))
                     contourPlate.Contour.AddContourPoint(new ContourPoint(new tsGeo.Point(point.X, point.Y, point.Z), new Chamfer()));
 
-                ////Check if the section property already exists, if not, create and apply
-
-                if (!m_ProfileLibrary.Contains(p.Property.Name))
-                {
-                    List<ISurfaceProperty> asdf = new List<ISurfaceProperty>();
-                    asdf.Add(p.Property);
-                    Create(asdf);
-                }
-
-                if (p.Property is ConstantThickness)
-                {
-                    ConstantThickness ct = (ConstantThickness) p.Property;
-                    contourPlate.Profile.ProfileString = "PL" + ct.Thickness.ToString();
-                }
-
+                contourPlate.Profile.ProfileString = "PL1000";
                 if (!contourPlate.Insert())
                 {
                     success = false;
                 }
+                else
+                {
+                    Beam tsBeam = new Beam();
+                    if(c.cutObject.GetType() == typeof(BH.oM.Structure.Elements.FramingElement))
+                    {
+                       int ids  = (int)c.cutObject.CustomData[AdapterId] ;
+                       ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(ids));
+                       tsBeam =  tsObj as Beam;
+                    }
+
+                    BooleanPart polygonCut = new BooleanPart();
+                    polygonCut.Father = tsBeam;
+                    polygonCut.OperativePart = contourPlate;
+                    polygonCut.Type = BooleanPart.BooleanTypeEnum.BOOLEAN_CUT;
+
+                    if (!polygonCut.Insert()) //if the cut wasn't made, return false
+                    {
+                        success = false;
+                    }
+                    else //otherwise, delete dummy plate created
+                    {
+                        contourPlate.Delete();
+                    }
+                }
             }
             return success;
         }
-
-        /***************************************************/
-
     }
 }

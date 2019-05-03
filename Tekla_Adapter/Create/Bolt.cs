@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+ * This file is part of the Buildings and Habitats object Model (BHoM)
+ * Copyright (c) 2015 - 2019, the respective contributors. All rights reserved.
+ *
+ * Each contributor holds copyright over their respective contributions.
+ * The project versioning (Git) records all such contribution source information.
+ *                                           
+ *                                                                              
+ * The BHoM is free software: you can redistribute it and/or modify         
+ * it under the terms of the GNU Lesser General Public License as published by  
+ * the Free Software Foundation, either version 3.0 of the License, or          
+ * (at your option) any later version.                                          
+ *                                                                              
+ * The BHoM is distributed in the hope that it will be useful,              
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of               
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the                 
+ * GNU Lesser General Public License for more details.                          
+ *                                                                            
+ * You should have received a copy of the GNU Lesser General Public License     
+ * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,10 +53,15 @@ namespace BH.Adapter.Tekla
 
             foreach (Bolt bolt in bolts)
             {
-                BH.oM.Geometry.Plane plane = new oM.Geometry.Plane() {Origin = bolt.Centerline.Start, Normal = new Vector() { X = bolt.Centerline.Start.X - bolt.Centerline.End.X, Y = bolt.Centerline.Start.Y - bolt.Centerline.End.Y, Z = bolt.Centerline.Start.Z - bolt.Centerline.End.Z } };
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
-                parameters.Add("plane", (object)plane);
-                Execute("CHANGE WORK PLANE",parameters);
+
+                WorkPlaneHandler PlaneHandler = m_TeklaModel.GetWorkPlaneHandler();
+                TransformationPlane GlobalPlane = new TransformationPlane();
+                PlaneHandler.SetCurrentTransformationPlane(GlobalPlane);
+
+                //BH.oM.Geometry.Plane plane = new oM.Geometry.Plane() {Origin = bolt.Centerline.Start, Normal = new Vector() { X = bolt.Centerline.Start.X - bolt.Centerline.End.X, Y = bolt.Centerline.Start.Y - bolt.Centerline.End.Y, Z = bolt.Centerline.Start.Z - bolt.Centerline.End.Z } };
+                //Dictionary<string, object> parameters = new Dictionary<string, object>();
+                //parameters.Add("plane", (object)plane);
+                //Execute("CHANGE WORK PLANE",parameters);
 
                 ContourPlate cp = new ContourPlate();
                 cp.AddContourPoint(new ContourPoint(new tsGeo.Point(30, 60, 0), null));
@@ -50,8 +77,8 @@ namespace BH.Adapter.Tekla
                 B.PartToBeBolted = cp;
                 B.PartToBoltTo = cp;
 
-                B.FirstPosition = new tsGeo.Point(30, 60, 0);
-                B.SecondPosition = new tsGeo.Point(60, 120, 0);
+                B.FirstPosition = new tsGeo.Point(bolt.Centerline.Start.X, bolt.Centerline.Start.Y, bolt.Centerline.Start.Z);
+                B.SecondPosition = new tsGeo.Point(bolt.Centerline.End.X, bolt.Centerline.End.Y, bolt.Centerline.End.Z);
 
                 B.BoltSize = 16;
                 B.Tolerance = 3.00;
