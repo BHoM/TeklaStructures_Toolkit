@@ -8,6 +8,8 @@ using BH.oM.Structure.Properties.Section;
 using BH.oM.Structure.Properties.Constraint;
 using BH.oM.Common.Materials;
 using BH.Engine.Tekla;
+using Tekla.Structures.Solid;
+using Tekla.Structures.Geometry3d;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
@@ -61,6 +63,8 @@ namespace BH.Adapter.Tekla
                 //framing.Property = tsBeam.Profile.ToBHoM();// not implemented yet - should only be added when ready for analytical elements
 
                 bhFramingList.Add(framing);
+
+                framing.CustomData.Add("lines", BH.Engine.Tekla.Query.PartGeo(tsBeam));
             }
 
             return bhFramingList;

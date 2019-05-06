@@ -50,6 +50,10 @@ namespace BH.Adapter.Tekla
         {
             bool success = true;
 
+            WorkPlaneHandler PlaneHandler = m_TeklaModel.GetWorkPlaneHandler();
+            TransformationPlane GlobalPlane = new TransformationPlane();
+            PlaneHandler.SetCurrentTransformationPlane(GlobalPlane);
+
             foreach (Cut c in cuts)
             {
                 //Crete New Polygon Cut

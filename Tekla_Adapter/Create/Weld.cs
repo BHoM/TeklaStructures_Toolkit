@@ -34,6 +34,7 @@ using BH.oM.Geometry;
 using Tekla.Structures;
 using tekmodel =  Tekla.Structures.Model;
 using tsGeo = Tekla.Structures.Geometry3d;
+using Tekla.Structures.Model;
 
 namespace BH.Adapter.Tekla
 {
@@ -48,55 +49,32 @@ namespace BH.Adapter.Tekla
         {
             bool success = false;
 
-            tsGeo.Point Beam1P1 = new tsGeo.Point(0, 12000, 0);
-            tsGeo.Point Beam1P2 = new tsGeo.Point(3000, 12000, 0);
+            WorkPlaneHandler PlaneHandler = m_TeklaModel.GetWorkPlaneHandler();
+            TransformationPlane GlobalPlane = new TransformationPlane();
+            PlaneHandler.SetCurrentTransformationPlane(GlobalPlane);
 
-            tsGeo.Point Beam2P1 = new tsGeo.Point(3000, 12000, 0);
-            tsGeo.Point Beam2P2 = new tsGeo.Point(3000, 18000, 0);
+            foreach (oM.Structure.Elements.Weld w in welds)
+            {
+                tekmodel.PolygonWeld polyWeld = new tekmodel.PolygonWeld();
+                polyWeld.TypeAbove = tekmodel.Weld.WeldTypeEnum.WELD_TYPE_FILLET;
+                //Needs updated to work with ICurve
+                List<Point> points = BH.Engine.Geometry.Query.ControlPoints((Polyline) w.weldPath);
 
-            tekmodel.Beam Beam1 = new tekmodel.Beam(Beam1P1, Beam1P2);
-            tekmodel.Beam Beam2 = new tekmodel.Beam(Beam2P1, Beam2P2);
+                //Convert Path to Tekla
+                foreach (Point p in points)
+                {
+                    polyWeld.Polygon.Points.Add(p.ToTekla());
+                }
 
-            Beam1.Profile.ProfileString = "HI400-15-20*400";
-            Beam1.Finish = "PAINT";
-            Beam1.Name = "Beam 1";
-            Beam2.Profile.ProfileString = "HI300-15-20*300";
-            Beam2.Name = "Beam 2";
+                //Find Relevant Model Elements
+                ModelObject tsObjWelded = m_TeklaModel.SelectModelObject(new Identifier((int)w.objWelded.CustomData[AdapterId]));
+                polyWeld.MainObject = tsObjWelded;
 
-            success = !Beam1.Insert();
+                ModelObject tsObjWeldedTo = m_TeklaModel.SelectModelObject(new Identifier((int)w.objWeldedTo.CustomData[AdapterId]));
+                polyWeld.SecondaryObject = tsObjWeldedTo;
 
-
-          success = !Beam2.Insert();
-
-
-            Beam1.Profile.ProfileString = "HI400-15-20*400";
-            Beam1.Finish = "PAINT";
-            Beam1.Name = "Beam 1";
-            Beam2.Profile.ProfileString = "HI300-15-20*300";
-            Beam2.Name = "Beam 2";
-
-            tekmodel.Weld Weld = new tekmodel.Weld();
-            Weld.MainObject = Beam1;
-            Weld.SecondaryObject = Beam2;
-            Weld.TypeAbove = tekmodel.Weld.WeldTypeEnum.WELD_TYPE_SQUARE_GROOVE_SQUARE_BUTT;
-
-            success = !Weld.Insert();
-
-            success = !Weld.Select();
-
-                Weld.LengthAbove = 12;
-            Weld.TypeBelow = tekmodel.Weld.WeldTypeEnum.WELD_TYPE_SLOT;
-
-            success = !Weld.Modify();
-
-            //tekmodel.PolygonWeld polyWeld = new tekmodel.PolygonWeld();
-            //polyWeld.MainObject = Beam1;
-            //polyWeld.SecondaryObject = Beam2;
-            //polyWeld.TypeAbove = tekmodel.Weld.WeldTypeEnum.WELD_TYPE_SQUARE_GROOVE_SQUARE_BUTT;
-            //polyWeld.Polygon.Points.Add(new tsGeo.Point(3000, 12000, 0));
-            //polyWeld.Polygon.Points.Add(new tsGeo.Point(3000, 18000, 0));
-
-            //success = !polyWeld.Insert();
+                success = !polyWeld.Insert();
+            }
 
             return success;
         }

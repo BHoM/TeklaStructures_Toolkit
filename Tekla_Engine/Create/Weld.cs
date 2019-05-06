@@ -15,9 +15,9 @@ namespace BH.Engine.Structure
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static Weld Weld(ICurve curve)
+        public static Weld Weld(ICurve curve, FramingElement objectWeldedTo, FramingElement objectWelded)
         {
-            return new Weld { weldPath = curve };
+            return new Weld { weldPath = curve, objWelded = objectWelded, objWeldedTo = objectWeldedTo };
         }
 
         /***************************************************/

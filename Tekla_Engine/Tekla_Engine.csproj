@@ -138,11 +138,11 @@
     <Compile Include="Create\Plane.cs" />
     <Compile Include="Create\Weld.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\Solid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Compute\" />
     <Folder Include="Modify\" />
-    <Folder Include="Query\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
