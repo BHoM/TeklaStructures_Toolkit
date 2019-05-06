@@ -17,6 +17,9 @@ namespace BH.oM.Structure.Elements
 
         public ICurve weldPath { get; set; }
 
+        public BHoMObject objWelded { get; set; } = null;
+
+        public BHoMObject objWeldedTo { get; set; } = null;
 
         // WeldContour Enum (none/flush/convex/concave/...)
 
