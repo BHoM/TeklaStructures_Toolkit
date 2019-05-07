@@ -110,6 +110,7 @@
     <Compile Include="Bolt.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Cut.cs" />
+    <Compile Include="Enums\BarInsertionPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Weld.cs" />
   </ItemGroup>

@@ -76,6 +76,23 @@ namespace BH.Adapter.Tekla
                 tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
                 tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
 
+                if (framing.CustomData.ContainsKey("InsertionPoint"))
+                {
+                    if ((int)framing.CustomData["InsertionPoint"] == 8)
+                    {
+                        tsBeam.Position.Depth = Position.DepthEnum.BEHIND;
+                    }
+                    else if ((int)framing.CustomData["InsertionPoint"] == 2)
+                    {
+                        tsBeam.Position.Depth = Position.DepthEnum.FRONT;
+                    }
+                    else
+                    {
+                        tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
+                    }
+                }
+                
+
                 BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty framingProperty = framing.Property as BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty;
                 //tsBeam.Position.Rotation = Position.RotationEnum.FRONT; /// -- it is unclear what changing this enum actually does; 
                 //tsBeam.Position.RotationOffset = framingProperty.OrientationAngle * (180 / Math.PI);
