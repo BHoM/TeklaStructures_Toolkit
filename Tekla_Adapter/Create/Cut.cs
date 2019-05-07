@@ -70,7 +70,7 @@ namespace BH.Adapter.Tekla
                 Profile pfl = new Profile();
 
                 foreach (Point point in Engine.Geometry.Query.IControlPoints(c.curve))
-                    contourPlate.Contour.AddContourPoint(new ContourPoint(new tsGeo.Point(point.X, point.Y, point.Z), new Chamfer()));
+                    contourPlate.Contour.AddContourPoint(new ContourPoint(new tsGeo.Point(point.X, point.Y, point.Z), new Chamfer(1, 2, Chamfer.ChamferTypeEnum.CHAMFER_NONE)));
 
                 contourPlate.Profile.ProfileString = "PL1000";
                 if (!contourPlate.Insert())

@@ -32,6 +32,7 @@ using BH.Engine.Tekla;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
+using Tekla.Structures.Geometry3d;
 using Tekla.Structures.Filtering;
 
 
@@ -58,8 +59,8 @@ namespace BH.Adapter.Tekla
                 if (framing.LocationCurve.GetType() == typeof(BH.oM.Geometry.Line))
                 {
                     BH.oM.Geometry.Line centreLine = framing.LocationCurve as BH.oM.Geometry.Line;
-                    tsBeam.StartPoint = centreLine.Start.ToTekla();
-                    tsBeam.EndPoint = centreLine.End.ToTekla();
+                    tsBeam.StartPoint = new Point { X = centreLine.Start.ToTekla().X * 1000, Y = centreLine.Start.ToTekla().Y * 1000, Z = centreLine.Start.ToTekla().Z * 1000 };
+                    tsBeam.EndPoint = new Point { X = centreLine.End.ToTekla().X * 1000, Y = centreLine.End.ToTekla().Y * 1000, Z = centreLine.End.ToTekla().Z * 1000 };
                 }
                 else if (framing.LocationCurve.GetType() == typeof(BH.oM.Geometry.Polyline))
                 {
@@ -71,7 +72,7 @@ namespace BH.Adapter.Tekla
 
                 tsBeam.Identifier = new Identifier(framingId);
                 tsBeam.Name = framing.Name;
-
+              
                 tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
                 tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
 
@@ -98,6 +99,9 @@ namespace BH.Adapter.Tekla
 
                 if (!tsBeam.Insert())
                     success = false;
+
+                framing.CustomData.Remove(AdapterId);
+                framing.CustomData.Add(AdapterId, tsBeam.Identifier.ID);
             }
 
             return success;
