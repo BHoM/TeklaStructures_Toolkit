@@ -66,18 +66,33 @@ namespace BH.Adapter.Tekla
                 contourPlate.Material.MaterialString = "ANTIMATERIAL";
                 contourPlate.Finish = "";
                 contourPlate.Class = BooleanPart.BooleanOperativeClassName;
-                contourPlate.Position.Depth = Position.DepthEnum.MIDDLE;
+                if (c.CustomData.ContainsKey("InsertionPoint"))
+                {
+                    if ((int)c.CustomData["InsertionPoint"] == 8)
+                    {
+                        contourPlate.Position.Depth = Position.DepthEnum.BEHIND;
+                    }
+                    else if ((int)c.CustomData["InsertionPoint"] == 2)
+                    {
+                        contourPlate.Position.Depth = Position.DepthEnum.FRONT;
+                    }
+                    else
+                    {
+                        contourPlate.Position.Depth = Position.DepthEnum.MIDDLE;
+                    }
+                }
                 Profile pfl = new Profile();
 
                 foreach (Point point in Engine.Geometry.Query.IControlPoints(c.curve))
                     contourPlate.Contour.AddContourPoint(new ContourPoint(new tsGeo.Point(point.X, point.Y, point.Z), new Chamfer(1, 2, Chamfer.ChamferTypeEnum.CHAMFER_NONE)));
 
-                contourPlate.Profile.ProfileString = "PL1000";
-                if (!contourPlate.Insert())
+                contourPlate.Profile.ProfileString = "PL" + c.thickness.ToString();
+
+                if (!contourPlate.Insert()) //Insert Plate
                 {
                     success = false;
                 }
-                else
+                else //Use Plate to Cut Parent
                 {
                     Beam tsBeam = new Beam();
                     if(c.cutObject.GetType() == typeof(BH.oM.Structure.Elements.FramingElement))
