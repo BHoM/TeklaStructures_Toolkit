@@ -51,17 +51,16 @@ namespace BH.Adapter.Tekla
 
             bool success = true;
 
+            WorkPlaneHandler PlaneHandler = m_TeklaModel.GetWorkPlaneHandler();
+            TransformationPlane GlobalPlane = new TransformationPlane();
+            PlaneHandler.SetCurrentTransformationPlane(GlobalPlane);
+
             foreach (Bolt bolt in bolts)
             {
-
-                WorkPlaneHandler PlaneHandler = m_TeklaModel.GetWorkPlaneHandler();
-                TransformationPlane GlobalPlane = new TransformationPlane();
-                PlaneHandler.SetCurrentTransformationPlane(GlobalPlane);
-
-                //BH.oM.Geometry.Plane plane = new oM.Geometry.Plane() {Origin = bolt.Centerline.Start, Normal = new Vector() { X = bolt.Centerline.Start.X - bolt.Centerline.End.X, Y = bolt.Centerline.Start.Y - bolt.Centerline.End.Y, Z = bolt.Centerline.Start.Z - bolt.Centerline.End.Z } };
+                //BH.oM.Geometry.Plane plane = new oM.Geometry.Plane() { Origin = bolt.Centerline.Start, Normal = new Vector() { X = bolt.Centerline.Start.X - bolt.Centerline.End.X, Y = bolt.Centerline.Start.Y - bolt.Centerline.End.Y, Z = bolt.Centerline.Start.Z - bolt.Centerline.End.Z } };
                 //Dictionary<string, object> parameters = new Dictionary<string, object>();
                 //parameters.Add("plane", (object)plane);
-                //Execute("CHANGE WORK PLANE",parameters);
+                //Execute("CHANGE WORK PLANE", parameters);
 
                 ContourPlate cp = new ContourPlate();
                 cp.AddContourPoint(new ContourPoint(new tsGeo.Point(30, 60, 0), null));
@@ -77,8 +76,17 @@ namespace BH.Adapter.Tekla
                 B.PartToBeBolted = cp;
                 B.PartToBoltTo = cp;
 
+                //Create line orthogonal to bolt centerline for purposes of creating local array axes
+                Vector v = new Vector();
+                BH.oM.Geometry.Vector boltV = BH.Engine.Geometry.Create.Vector(bolt.Centerline.Start.X - bolt.Centerline.End.X, bolt.Centerline.Start.Y - bolt.Centerline.End.Y, bolt.Centerline.Start.Z - bolt.Centerline.End.Z);
+
+                if ( bolt.Centerline.Start.Z == bolt.Centerline.End.Z )
+                 v = BH.Engine.Geometry.Query.CrossProduct(boltV, new Vector { X = 0, Y=0, Z=1});
+                else
+                 v = BH.Engine.Geometry.Query.CrossProduct(boltV, new Vector { X = 1, Y = 0, Z = 0 });
+
                 B.FirstPosition = new tsGeo.Point(bolt.Centerline.Start.X, bolt.Centerline.Start.Y, bolt.Centerline.Start.Z);
-                B.SecondPosition = new tsGeo.Point(bolt.Centerline.End.X, bolt.Centerline.End.Y, bolt.Centerline.End.Z);
+                B.SecondPosition = new tsGeo.Point(BH.Engine.Geometry.Create.Line(bolt.Centerline.Start, v).End.X, BH.Engine.Geometry.Create.Line(bolt.Centerline.Start, v).End.Y, BH.Engine.Geometry.Create.Line(bolt.Centerline.Start, v).End.Z);
 
                 B.BoltSize = 16;
                 B.Tolerance = 3.00;
@@ -92,7 +100,7 @@ namespace BH.Adapter.Tekla
 
                 B.Position.Depth = Position.DepthEnum.MIDDLE;
                 B.Position.Plane = Position.PlaneEnum.MIDDLE;
-                B.Position.Rotation = Position.RotationEnum.FRONT;
+                B.Position.Rotation = Position.RotationEnum.TOP;
 
                 B.Bolt = true;
                 B.Washer1 = true;
@@ -111,11 +119,19 @@ namespace BH.Adapter.Tekla
 
                 B.AddBoltDistY(0);
 
+                //B.AddBoltDistX(100);
+                //B.AddBoltDistX(90);
+                //B.AddBoltDistX(80);
+
+                //B.AddBoltDistY(70);
+                //B.AddBoltDistY(60);
+                //B.AddBoltDistY(50);
 
                 if (!B.Insert())
                     success = false;
 
             }
+
             return success;
         }
 

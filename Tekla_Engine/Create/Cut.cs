@@ -16,9 +16,9 @@ namespace BH.Engine.Structure
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static Cut Cut(ICurve curve , BHoMObject obj)
+        public static Cut Cut(ICurve curve , BHoMObject obj, double thickness)
         {
-            return new Cut { curve = curve, cutObject = obj};
+            return new Cut { curve = curve, cutObject = obj, thickness = thickness};
         }
 
         /***************************************************/

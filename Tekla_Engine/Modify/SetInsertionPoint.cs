@@ -37,15 +37,15 @@ namespace BH.Engine.Tekla
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static FramingElement SetInsertionPoint(this FramingElement bar, BarInsertionPoint barInsertionPoint = BarInsertionPoint.Centroid)
+        public static BH.oM.Base.BHoMObject SetInsertionPoint(this BH.oM.Base.BHoMObject obj, BarInsertionPoint barInsertionPoint = BarInsertionPoint.Centroid)
         {
-            FramingElement clone = (FramingElement)bar.GetShallowClone();
+            BH.oM.Base.BHoMObject clone = (BH.oM.Base.BHoMObject)obj.GetShallowClone();
 
             clone.CustomData["InsertionPoint"] = barInsertionPoint;
 
             return clone;
         }
-
+ 
         /***************************************************/
     }
 }

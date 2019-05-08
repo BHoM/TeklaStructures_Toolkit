@@ -16,6 +16,8 @@ namespace BH.oM.Structure.Elements
         public ICurve curve { get; set; } = null;
 
         public BHoMObject cutObject { get; set; } = null;
+
+        public double thickness { get; set; } = 0;
     }
 
 }
