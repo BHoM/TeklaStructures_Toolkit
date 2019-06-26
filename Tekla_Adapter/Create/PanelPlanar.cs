@@ -25,12 +25,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
-using BH.oM.Structure.Properties;
-using BH.oM.Structure.Properties.Section;
-using BH.oM.Structure.Properties.Constraint;
+using BH.oM.Structure.SurfaceProperties;
 using BH.Engine.Tekla;
 using BH.oM.Geometry;
-using BH.oM.Structure.Properties.Surface;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
@@ -45,13 +42,13 @@ namespace BH.Adapter.Tekla
         /**** Private methods                           ****/
         /***************************************************/
 
-        private bool CreateCollection(IEnumerable<PanelPlanar> PanelPlanar)
+        private bool CreateCollection(IEnumerable<Panel> panels)
         {
             //Code for creating a collection of panel planar in the software
 
             bool success = true;
 
-            foreach (PanelPlanar p in PanelPlanar)
+            foreach (Panel p in panels)
             {
                 ////Create a Plate Profile
                 ContourPlate contourPlate = new ContourPlate();

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using BH.oM.Base;
 using BH.oM.Geometry;
-using BH.oM.Structure.Properties;
 using BH.oM.Structure.Elements;
 
 namespace BH.oM.Structure.Elements
@@ -15,7 +14,7 @@ namespace BH.oM.Structure.Elements
     {
         public List<int> ConnectingElementIds { get; set; } = null;
 
-        public List<PanelPlanar> Plates { get; set; } = null;
+        public List<Panel> Plates { get; set; } = null;
 
         public List<Bolt> Bolts { get; set; } = null;
 

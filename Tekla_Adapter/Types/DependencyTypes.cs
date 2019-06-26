@@ -23,9 +23,9 @@
 using BH.Engine.Base.Objects;
 using BH.oM.Common.Materials;
 using BH.oM.Structure.Elements;
-using BH.oM.Structure.Properties.Section;
-using BH.oM.Structure.Properties.Surface;
-using BH.oM.Structure.Properties.Constraint;
+using BH.oM.Structure.SurfaceProperties;
+using BH.oM.Structure.SectionProperties;
+using BH.oM.Structure.Constraints;
 using System;
 using System.Collections.Generic;
 
@@ -74,7 +74,7 @@ namespace BH.Adapter.Tekla
             {typeof(RigidLink), new List<Type> { typeof(LinkConstraint), typeof(Node) } },
             {typeof(FEMesh), new List<Type> { typeof(ISurfaceProperty), typeof(Node) } },
             {typeof(ISurfaceProperty), new List<Type> { typeof(Material) } },
-            {typeof(PanelPlanar), new List<Type> { typeof(ISurfaceProperty) } }
+            {typeof(Panel), new List<Type> { typeof(ISurfaceProperty) } }
         };
 
 
