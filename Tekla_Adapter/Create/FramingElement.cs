@@ -25,9 +25,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
-using BH.oM.Structure.Properties.Section;
-using BH.oM.Structure.Properties.Constraint;
-using BH.oM.Common.Materials;
 using BH.Engine.Tekla;
 
 using Tekla.Structures;
@@ -93,7 +90,7 @@ namespace BH.Adapter.Tekla
                 }
                 
 
-                BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty framingProperty = framing.Property as BH.oM.Structure.Properties.Framing.ConstantFramingElementProperty;
+                BH.oM.Structure.FramingProperties.ConstantFramingElementProperty framingProperty = framing.Property as BH.oM.Structure.FramingProperties.ConstantFramingElementProperty;
                 //tsBeam.Position.Rotation = Position.RotationEnum.FRONT; /// -- it is unclear what changing this enum actually does; 
                 //tsBeam.Position.RotationOffset = framingProperty.OrientationAngle * (180 / Math.PI);
 

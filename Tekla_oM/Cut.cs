@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 using BH.oM.Base;
 using BH.oM.Geometry;
-using BH.oM.Structure.Properties;
-using BH.oM.Structure.Elements;
+
 
 namespace BH.oM.Structure.Elements
 {

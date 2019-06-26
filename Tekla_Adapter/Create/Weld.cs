@@ -25,16 +25,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
-using BH.oM.Structure.Properties;
-using BH.oM.Structure.Properties.Section;
-using BH.oM.Structure.Properties.Constraint;
-using BH.Engine.Tekla;
+
+
 using BH.oM.Geometry;
+using BH.Engine.Tekla;
 
 using Tekla.Structures;
 using tekmodel =  Tekla.Structures.Model;
 using tsGeo = Tekla.Structures.Geometry3d;
 using Tekla.Structures.Model;
+
 
 namespace BH.Adapter.Tekla
 {

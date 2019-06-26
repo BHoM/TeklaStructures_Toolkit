@@ -1,0 +1,5 @@
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csprojResolveAssemblyReference.cache
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\Build\Tekla_Adapter.dll
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\Build\Tekla_Adapter.pdb
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.dll
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.pdb
