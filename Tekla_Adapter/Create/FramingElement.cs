@@ -110,10 +110,15 @@ namespace BH.Adapter.Tekla
                 }
                 else
                 {
+                    if(m_ProfileLibrary.Count>=1)
+                    {
+                        //add warning that profile does not exist and standard section has been used
+                        Engine.Reflection.Compute.RecordWarning("Profile " + framing.Property.Name + " was not found in library - replaced with: " + m_ProfileLibrary[0]);
+                        tsBeam.Profile.ProfileString = m_ProfileLibrary[0];
+                    }
+                    else
+                        Engine.Reflection.Compute.RecordWarning("Tekla's profile is empty or could not be read");
 
-                    //add warning that profile does not exist and standard section has been used
-                    Engine.Reflection.Compute.RecordWarning("Profile " + framing.Property.Name + " was not found in library - replaced with: " + m_ProfileLibrary[0]);
-                    tsBeam.Profile.ProfileString = m_ProfileLibrary[0];
                 }
 
                 if (!tsBeam.Insert())
