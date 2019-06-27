@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Structure.Elements;
 
 using BH.oM.Common.Materials;
 using BH.Engine.Tekla;
+using BH.oM.Physical.Elements;
+using BH.oM.Physical.FramingProperties;
 using Tekla.Structures.Solid;
 using Tekla.Structures.Geometry3d;
 
 using Tekla.Structures;
-using Tekla.Structures.Model;
+using tsModel = Tekla.Structures.Model;
 using Tekla.Structures.Filtering;
 using tsGeo = Tekla.Structures.Geometry3d;
 
@@ -20,7 +21,7 @@ namespace BH.Adapter.Tekla
     public partial class TeklaAdapter
     {
 
-        private List<FramingElement> ReadFramingElements(List<string> ids = null)
+        private List<IFramingElement> ReadFramingElements(List<string> ids = null)
         {
             //Tip: If the software stores depending types such as Nodes and SectionProperties in separate object tables,
             //it might be a massive preformance boost to read in and store these properties before reading in the bars 
@@ -30,14 +31,14 @@ namespace BH.Adapter.Tekla
 
             //Implement code for reading bars
 
-            List<Beam> tsBeamList = new List<Beam>();
-            List<FramingElement> bhFramingList = new List<FramingElement>();
+            List<tsModel.Beam> tsBeamList = new List<tsModel.Beam>();
+            List<IFramingElement> bhFramingList = new List<IFramingElement>();
 
             if (ids == null)
             {
-                foreach (ModelObject tsObj in m_ObjectSelector.GetAllObjectsWithType(ModelObject.ModelObjectEnum.BEAM))
+                foreach (tsModel.ModelObject tsObj in m_ObjectSelector.GetAllObjectsWithType(tsModel.ModelObject.ModelObjectEnum.BEAM))
                 {
-                    tsBeamList.Add(tsObj as Beam);
+                    tsBeamList.Add(tsObj as tsModel.Beam);
                 }
             }
             else
@@ -46,20 +47,21 @@ namespace BH.Adapter.Tekla
                 foreach (string id in ids)
                 {
                     int idNum = System.Convert.ToInt32(id);
-                    ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(idNum));
+                    tsModel.ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(idNum));
 
-                    tsBeamList.Add(tsObj as Beam);
+                    tsBeamList.Add(tsObj as tsModel.Beam);
                 }
             }
 
-            foreach (Beam tsBeam in tsBeamList)
+            foreach (tsModel.Beam tsBeam in tsBeamList)
             {
-                FramingElement framing = new FramingElement();
-                framing.LocationCurve = new oM.Geometry.Line() { Start = tsBeam.StartPoint.ToBHoM(), End = tsBeam.EndPoint.ToBHoM() };
-                framing.Name = tsBeam.Name;
-                framing.CustomData[AdapterId] = tsBeam.Identifier.ID;
-                framing.StructuralUsage = tsBeam.Type.ToBHoM();
-                //framing.Property = tsBeam.Profile.ToBHoM();// not implemented yet - should only be added when ready for analytical elements
+                IFramingElement framing = tsBeam.ToBHoM();
+
+                //framing.LocationCurve = new oM.Geometry.Line() { Start = tsBeam.StartPoint.ToBHoM(), End = tsBeam.EndPoint.ToBHoM() };
+                //framing.Name = tsBeam.Name;
+                //framing.CustomData[AdapterId] = tsBeam.Identifier.ID;
+                //framing.StructuralUsage = tsBeam.Type.ToBHoM();
+                ////framing.Property = tsBeam.Profile.ToBHoM();// not implemented yet - should only be added when ready for analytical elements
 
                 bhFramingList.Add(framing);
 

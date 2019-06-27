@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Convert\AdapterId.cs" />
+    <Compile Include="Convert\ToBHoM\FramingElement.cs" />
     <Compile Include="Convert\ToBHoM\Geometry.cs" />
     <Compile Include="Convert\ToBHoM\StructuralType.cs" />
     <Compile Include="Convert\ToTekla\Geometry.cs" />
