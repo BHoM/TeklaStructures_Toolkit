@@ -117,7 +117,9 @@ namespace BH.Adapter.Tekla
                         tsBeam.Profile.ProfileString = m_ProfileLibrary[0];
                     }
                     else
-                        Engine.Reflection.Compute.RecordWarning("Tekla's profile is empty or could not be read");
+                    {
+                        //set a new profile NOT from library i.e. some parametric profile 
+                    }
 
                 }
 
