@@ -24,11 +24,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Structure.Elements;
-using BH.Engine.Tekla;
 
+using BH.Engine.Tekla;
+using BH.oM.Physical.Elements;
 using Tekla.Structures;
-using Tekla.Structures.Model;
+using tsModel = Tekla.Structures.Model;
 using Tekla.Structures.Geometry3d;
 using Tekla.Structures.Filtering;
 
@@ -37,11 +37,11 @@ namespace BH.Adapter.Tekla
 {
     public partial class TeklaAdapter
     {
-        private bool CreateCollection(IEnumerable<FramingElement> framingElements)
+        private bool CreateCollection(IEnumerable<IFramingElement> framingElements)
         {
             bool success = true;
 
-            foreach (FramingElement framing in framingElements)
+            foreach (IFramingElement framing in framingElements)
             {
                 //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
                 int framingId = (int)framing.CustomData[AdapterId];
@@ -51,9 +51,12 @@ namespace BH.Adapter.Tekla
                 //object endNodeId = bar.EndNode.CustomData[AdapterId];
                 //object SecPropId = bar.SectionProperty.CustomData[AdapterId];
 
-                Beam tsBeam = new Beam(framing.StructuralUsage.ToTekla());
 
-                if (framing.LocationCurve.GetType() == typeof(BH.oM.Geometry.Line))
+                tsModel.Beam tsBeam = new tsModel.Beam(framing.ToTeklaFramingType());
+
+                
+
+                if (framing.Location.GetType() == typeof(BH.oM.Geometry.Line))
                 {
                     BH.oM.Geometry.Line centreLine = framing.LocationCurve as BH.oM.Geometry.Line;
                     tsBeam.StartPoint = new Point { X = centreLine.Start.ToTekla().X * 1000, Y = centreLine.Start.ToTekla().Y * 1000, Z = centreLine.Start.ToTekla().Z * 1000 };
