@@ -31,6 +31,7 @@ using Tekla.Structures;
 using tsModel = Tekla.Structures.Model;
 using Tekla.Structures.Geometry3d;
 using Tekla.Structures.Filtering;
+using BH.oM.Physical.FramingProperties;
 
 
 namespace BH.Adapter.Tekla
@@ -58,13 +59,13 @@ namespace BH.Adapter.Tekla
 
                 if (framing.Location.GetType() == typeof(BH.oM.Geometry.Line))
                 {
-                    BH.oM.Geometry.Line centreLine = framing.LocationCurve as BH.oM.Geometry.Line;
+                    BH.oM.Geometry.Line centreLine = framing.Location as BH.oM.Geometry.Line;
                     tsBeam.StartPoint = new Point { X = centreLine.Start.ToTekla().X * 1000, Y = centreLine.Start.ToTekla().Y * 1000, Z = centreLine.Start.ToTekla().Z * 1000 };
                     tsBeam.EndPoint = new Point { X = centreLine.End.ToTekla().X * 1000, Y = centreLine.End.ToTekla().Y * 1000, Z = centreLine.End.ToTekla().Z * 1000 };
                 }
-                else if (framing.LocationCurve.GetType() == typeof(BH.oM.Geometry.Polyline))
+                else if (framing.Location.GetType() == typeof(BH.oM.Geometry.Polyline))
                 {
-                    BH.oM.Geometry.Polyline centreLine = framing.LocationCurve as BH.oM.Geometry.Polyline;
+                    BH.oM.Geometry.Polyline centreLine = framing.Location as BH.oM.Geometry.Polyline;
                     tsBeam.StartPoint = centreLine.ControlPoints.First().ToTekla();
                     tsBeam.EndPoint = centreLine.ControlPoints.Last().ToTekla();
                     // add warning that polyline has been changed to line ! ! ! ! 
@@ -73,32 +74,32 @@ namespace BH.Adapter.Tekla
                 tsBeam.Identifier = new Identifier(framingId);
                 tsBeam.Name = framing.Name;
               
-                tsBeam.Position.Plane = Position.PlaneEnum.MIDDLE;
-                tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
+                tsBeam.Position.Plane = tsModel.Position.PlaneEnum.MIDDLE;
+                tsBeam.Position.Depth = tsModel.Position.DepthEnum.MIDDLE;
 
                 if (framing.CustomData.ContainsKey("InsertionPoint"))
                 {
                     if ((int)framing.CustomData["InsertionPoint"] == 8)
                     {
-                        tsBeam.Position.Depth = Position.DepthEnum.BEHIND;
+                        tsBeam.Position.Depth = tsModel.Position.DepthEnum.BEHIND;
                     }
                     else if ((int)framing.CustomData["InsertionPoint"] == 2)
                     {
-                        tsBeam.Position.Depth = Position.DepthEnum.FRONT;
+                        tsBeam.Position.Depth = tsModel.Position.DepthEnum.FRONT;
                     }
                     else
                     {
-                        tsBeam.Position.Depth = Position.DepthEnum.MIDDLE;
+                        tsBeam.Position.Depth = tsModel.Position.DepthEnum.MIDDLE;
                     }
                 }
                 
 
-                BH.oM.Structure.FramingProperties.ConstantFramingElementProperty framingProperty = framing.Property as BH.oM.Structure.FramingProperties.ConstantFramingElementProperty;
+                ConstantFramingProperty framingProperty = framing.Property as ConstantFramingProperty;
                 //tsBeam.Position.Rotation = Position.RotationEnum.FRONT; /// -- it is unclear what changing this enum actually does; 
                 //tsBeam.Position.RotationOffset = framingProperty.OrientationAngle * (180 / Math.PI);
 
-                if (m_MaterialLibrary.Contains(framingProperty.SectionProperty.Material.Name))
-                    tsBeam.Material.MaterialString = framingProperty.SectionProperty.Material.Name;
+                if (m_MaterialLibrary.Contains(framingProperty.Material.Name))
+                    tsBeam.Material.MaterialString = framingProperty.Material.Name;
                 else
                     tsBeam.Material.MaterialString = "S355";
 
