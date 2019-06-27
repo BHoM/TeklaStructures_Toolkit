@@ -50,7 +50,7 @@ namespace BH.Adapter.Tekla
                 return ReadSectionProperties(ids as dynamic);
             else if (type == typeof(Material))
                 return ReadMaterials(ids as dynamic);
-            else if (type == typeof(IFramingElement))
+            else if (type == typeof(IFramingElement) || type.GetInterfaces().Contains(typeof(IFramingElement)))
                 return ReadFramingElements(ids as dynamic);
             else if (type == typeof(Connection))
                 return ReadConnections(ids as dynamic);

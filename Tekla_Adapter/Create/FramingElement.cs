@@ -110,6 +110,7 @@ namespace BH.Adapter.Tekla
                 }
                 else
                 {
+
                     //add warning that profile does not exist and standard section has been used
                     Engine.Reflection.Compute.RecordWarning("Profile " + framing.Property.Name + " was not found in library - replaced with: " + m_ProfileLibrary[0]);
                     tsBeam.Profile.ProfileString = m_ProfileLibrary[0];
