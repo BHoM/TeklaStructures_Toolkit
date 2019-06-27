@@ -30,6 +30,7 @@ using BH.oM.Base;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Common.Materials;
+using BH.oM.Physical.Elements;
 
 namespace BH.Adapter.Tekla
 {
@@ -49,7 +50,7 @@ namespace BH.Adapter.Tekla
                 return ReadSectionProperties(ids as dynamic);
             else if (type == typeof(Material))
                 return ReadMaterials(ids as dynamic);
-            else if (type == typeof(FramingElement))
+            else if (type == typeof(IFramingElement))
                 return ReadFramingElements(ids as dynamic);
             else if (type == typeof(Connection))
                 return ReadConnections(ids as dynamic);

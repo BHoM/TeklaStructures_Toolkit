@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Structure.Elements;
-
-using Tekla.Structures.Model;
+using BH.oM.Physical.Elements;
+using tsModel = Tekla.Structures.Model;
 
 
 namespace BH.Engine.Tekla
@@ -16,24 +15,21 @@ namespace BH.Engine.Tekla
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static Beam.BeamTypeEnum ToTekla(this StructuralUsage1D structuralType)
+        public static tsModel.Beam.BeamTypeEnum ToTeklaFramingType(this IFramingElement framing)
         {
-            switch (structuralType)
+            string typeString = framing.GetType().ToString();
+            switch (typeString)
             {
-                case StructuralUsage1D.Undefined:
-                    return Beam.BeamTypeEnum.BEAM;
-                case StructuralUsage1D.Beam:
-                    return Beam.BeamTypeEnum.BEAM;
-                case StructuralUsage1D.Column:
-                    return Beam.BeamTypeEnum.COLUMN;
-                case StructuralUsage1D.Brace:
+                case "Beam":
+                    return tsModel.Beam.BeamTypeEnum.BEAM;
+                case "Column":
+                    return tsModel.Beam.BeamTypeEnum.COLUMN;
+                case "Bracing":
                     throw new Exception("Brace-Type not implemented");
-                case StructuralUsage1D.Cable:
+                case "Cable":
                     throw new Exception("Cable-Type not implemented");
-                case StructuralUsage1D.Pile:
-                    throw new Exception("Pile-Type not implemented");
                 default:
-                    return Beam.BeamTypeEnum.BEAM;
+                    return tsModel.Beam.BeamTypeEnum.BEAM;
             }
         }
     }
