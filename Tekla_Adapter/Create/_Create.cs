@@ -37,7 +37,7 @@ namespace BH.Adapter.Tekla
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override bool Create<T>(IEnumerable<T> objects, bool replaceAll = false)
+        protected override bool Create<T>(IEnumerable<T> objects)
         {
             //This is the main dispatcher method, calling the specific implementation methods for the other toolkits.
 

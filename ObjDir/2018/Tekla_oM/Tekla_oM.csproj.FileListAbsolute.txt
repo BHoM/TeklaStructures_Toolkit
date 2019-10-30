@@ -1,5 +1,0 @@
-C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\Build\Tekla_oM.dll
-C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\Build\Tekla_oM.pdb
-C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.dll
-C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.pdb
-C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.csprojResolveAssemblyReference.cache
