@@ -1,0 +1,7 @@
+C:\Users\alombardi\GitHub\Tekla_Toolkit\Build\Tekla_Engine.dll
+C:\Users\alombardi\GitHub\Tekla_Toolkit\Build\Tekla_Engine.pdb
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Engine\Tekla_Engine.csprojAssemblyReference.cache
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Engine\Tekla_Engine.csproj.CoreCompileInputs.cache
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Engine\Tekla_Engine.csproj.CopyComplete
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Engine\Tekla_Engine.dll
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Engine\Tekla_Engine.pdb

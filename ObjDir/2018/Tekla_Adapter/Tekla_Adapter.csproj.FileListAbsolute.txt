@@ -1,0 +1,7 @@
+C:\Users\alombardi\GitHub\Tekla_Toolkit\Build\Tekla_Adapter.dll
+C:\Users\alombardi\GitHub\Tekla_Toolkit\Build\Tekla_Adapter.pdb
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csprojAssemblyReference.cache
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csproj.CoreCompileInputs.cache
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csproj.CopyComplete
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.dll
+C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.pdb
