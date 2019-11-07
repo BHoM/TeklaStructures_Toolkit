@@ -1,7 +1,0 @@
-C:\Users\alombardi\GitHub\Tekla_Toolkit\Build\Tekla_oM.dll
-C:\Users\alombardi\GitHub\Tekla_Toolkit\Build\Tekla_oM.pdb
-C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.csprojAssemblyReference.cache
-C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.csproj.CoreCompileInputs.cache
-C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.csproj.CopyComplete
-C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.dll
-C:\Users\alombardi\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.pdb
