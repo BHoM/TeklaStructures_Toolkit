@@ -38,7 +38,9 @@ namespace BH.Adapter.Tekla
             {
                 foreach (tsModel.ModelObject tsObj in m_ObjectSelector.GetAllObjectsWithType(tsModel.ModelObject.ModelObjectEnum.BEAM))
                 {
-                    tsBeamList.Add(tsObj as tsModel.Beam);
+                    tsModel.Beam tsBeamObj = tsObj as tsModel.Beam;
+                    if (tsBeamObj.Type == tsModel.Beam.BeamTypeEnum.BEAM | tsBeamObj.Type == tsModel.Beam.BeamTypeEnum.COLUMN)
+                        tsBeamList.Add(tsBeamObj);// tsObj as tsModel.Beam);
                 }
             }
             else
@@ -49,7 +51,10 @@ namespace BH.Adapter.Tekla
                     int idNum = System.Convert.ToInt32(id);
                     tsModel.ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(idNum));
 
-                    tsBeamList.Add(tsObj as tsModel.Beam);
+                    tsModel.Beam tsBeamObj = tsObj as tsModel.Beam;
+                    if (tsBeamObj.Type == tsModel.Beam.BeamTypeEnum.BEAM | tsBeamObj.Type == tsModel.Beam.BeamTypeEnum.COLUMN)
+
+                        tsBeamList.Add(tsBeamObj);// tsObj as tsModel.Beam);
                 }
             }
 
