@@ -47,7 +47,7 @@ namespace BH.Adapter.Tekla
             foreach (Node node in nodes)
             {
                 //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
-                object nodeId = node.CustomData[AdapterId];
+                object nodeId = node.CustomData[AdapterIdName];
 
                 // not sure how to approach this... Bars do not contain start-/end-nodes but start-/end-points!
                 // this method could be used to create Tekla.Structures.Analysis.AnalysisNode() - but this might not be what this class is intended for

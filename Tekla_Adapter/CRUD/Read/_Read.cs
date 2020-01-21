@@ -31,6 +31,7 @@ using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Common.Materials;
 using BH.oM.Physical.Elements;
+using BH.oM.Adapter;
 
 namespace BH.Adapter.Tekla
 {
@@ -40,7 +41,7 @@ namespace BH.Adapter.Tekla
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override IEnumerable<IBHoMObject> Read(Type type, IList ids)
+        protected override IEnumerable<IBHoMObject> IRead(Type type, IList ids, ActionConfig actionConfig = null)
         {
             //Main dispatcher method.
             //Choose what to pull out depending on the type.

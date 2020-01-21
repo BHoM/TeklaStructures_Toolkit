@@ -32,7 +32,7 @@ namespace BH.Engine.Tekla
 
             framing.Location = new BH.oM.Geometry.Polyline() { ControlPoints = new List<oM.Geometry.Point>() { tsBeam.StartPoint.ToBHoM(), tsBeam.EndPoint.ToBHoM() } };
             framing.Name = tsBeam.Name;
-            framing.CustomData[AdapterId] = tsBeam.Identifier.ID;
+            framing.CustomData[AdapterIdName] = tsBeam.Identifier.ID;
             framing.Property = new ConstantFramingProperty() { Name = tsBeam.Profile.ProfileString };
 
             return framing;

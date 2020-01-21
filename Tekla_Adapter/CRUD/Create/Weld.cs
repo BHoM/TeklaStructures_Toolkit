@@ -67,10 +67,10 @@ namespace BH.Adapter.Tekla
                 }
 
                 //Find Relevant Model Elements
-                ModelObject tsObjWelded = m_TeklaModel.SelectModelObject(new Identifier((int)w.objWelded.CustomData[AdapterId]));
+                ModelObject tsObjWelded = m_TeklaModel.SelectModelObject(new Identifier((int)w.objWelded.CustomData[AdapterIdName]));
                 polyWeld.MainObject = tsObjWelded;
 
-                ModelObject tsObjWeldedTo = m_TeklaModel.SelectModelObject(new Identifier((int)w.objWeldedTo.CustomData[AdapterId]));
+                ModelObject tsObjWeldedTo = m_TeklaModel.SelectModelObject(new Identifier((int)w.objWeldedTo.CustomData[AdapterIdName]));
                 polyWeld.SecondaryObject = tsObjWeldedTo;
 
                 success = !polyWeld.Insert();

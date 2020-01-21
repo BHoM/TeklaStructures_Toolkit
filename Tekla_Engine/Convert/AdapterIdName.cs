@@ -9,6 +9,6 @@ namespace BH.Engine.Tekla
     public static partial class Convert
     {
         //Key used to find the software in the custom data of created or read objects
-        public const string AdapterId = "Tekla_id";
+        public const string AdapterIdName = "Tekla_id";
     }
 }

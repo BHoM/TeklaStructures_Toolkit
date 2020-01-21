@@ -45,7 +45,7 @@ namespace BH.Adapter.Tekla
             foreach (IFramingElement framing in framingElements)
             {
                 //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
-                int framingId = (int)framing.CustomData[AdapterId];
+                int framingId = (int)framing.CustomData[AdapterIdName];
                 //If also the default implmentation for the DependencyTypes is used,
                 //one can from here get the id's of the subobjects by calling (cast into applicable type used by the software): 
                 //object startNodeId = bar.StartNode.CustomData[AdapterId];
@@ -126,7 +126,7 @@ namespace BH.Adapter.Tekla
                 if (!tsBeam.Insert())
                     success = false;
 
-                framing.CustomData.Remove(AdapterId);
+                framing.CustomData.Remove(AdapterIdName);
                 framing.CustomData.Add(AdapterId, tsBeam.Identifier.ID);
             }
 

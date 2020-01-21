@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
+using BH.oM.Adapter;
 
 using BH.oM.Common.Materials;
 
@@ -37,7 +38,7 @@ namespace BH.Adapter.Tekla
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override bool Create<T>(IEnumerable<T> objects)
+        protected override bool ICreate<T>(IEnumerable<T> objects, ActionConfig actionConfig = null)
         {
             //This is the main dispatcher method, calling the specific implementation methods for the other toolkits.
 

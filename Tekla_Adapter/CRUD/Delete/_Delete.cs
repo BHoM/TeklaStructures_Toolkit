@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BH.oM.Adapter;
 
 namespace BH.Adapter.Tekla
 {
@@ -34,7 +35,7 @@ namespace BH.Adapter.Tekla
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override int Delete(Type type, IEnumerable<object> ids)
+        protected override int IDelete(Type type, IEnumerable<object> ids, ActionConfig actionconfig = null)
         {
             //Insert code here to enable deletion of specific types of objects with specific ids
             return 0;
