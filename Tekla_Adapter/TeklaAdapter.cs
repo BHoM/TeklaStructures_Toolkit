@@ -33,6 +33,7 @@ namespace BH.Adapter.Tekla
             GetDependencyTypes();
             BH.Adapter.Modules.Structure.ModuleLoader.LoadModules(this);
 
+
             if (active)
             {
 

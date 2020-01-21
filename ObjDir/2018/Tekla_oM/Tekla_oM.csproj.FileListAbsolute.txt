@@ -1,0 +1,5 @@
+C:\Users\msuen\OneDrive - BuroHappold\Documents\GitHub\Tekla_Toolkit\Build\Tekla_oM.dll
+C:\Users\msuen\OneDrive - BuroHappold\Documents\GitHub\Tekla_Toolkit\Build\Tekla_oM.pdb
+C:\Users\msuen\OneDrive - BuroHappold\Documents\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.dll
+C:\Users\msuen\OneDrive - BuroHappold\Documents\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.pdb
+C:\Users\msuen\OneDrive - BuroHappold\Documents\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_oM\Tekla_oM.csprojResolveAssemblyReference.cache
