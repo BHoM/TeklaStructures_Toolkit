@@ -8,6 +8,9 @@ using BH.oM.Structure.Elements;
 
 using BH.Engine.Tekla;
 using BH.oM.Geometry;
+using BH.oM.Adapter;
+using BH.oM.Reflection;
+using BH.oM.Adapter.Commands;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
@@ -18,10 +21,10 @@ namespace BH.Adapter.Tekla
     public partial class TeklaAdapter
     {
         /***************************************************/
-        /****           Adapter Methods                 ****/
+        /****           IAdapter Interface              ****/
         /***************************************************/
 
-        public override bool Execute(string command, Dictionary<string, object> parameters = null, Dictionary<string, object> config = null)
+        public override Output<List<object>, bool> Execute(IExecuteCommand command, ActionConfig actionConfig = null)
         {
             bool success = true;
 

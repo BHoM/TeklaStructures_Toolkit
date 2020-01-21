@@ -47,7 +47,7 @@ namespace BH.Adapter.Tekla
             foreach (Material material in materials)
             {
                 //Tip: if the NextId method has been implemented you can get the id to be used for the creation out as (cast into applicable type used by the software):
-                object materialId = material.CustomData[AdapterId];
+                object materialId = material.CustomData[AdapterIdName];
 
                 //proposed functionality:
                 //check if material exists in the loaded catalog from tekla - m_MaterialEnumerator() - if not add the material

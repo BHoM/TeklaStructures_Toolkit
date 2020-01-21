@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.Adapter;
 using BH.Engine.Tekla;
+using BH.oM.Adapter;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
@@ -26,10 +27,14 @@ namespace BH.Adapter.Tekla
         //Add any applicable constructors here, such as linking to a specific file or anything else as well as linking to that file through the (if existing) com link via the API
         public TeklaAdapter(string filePath = "", bool active = false)
         {
+            //Initialise
+            AdapterIdName = BH.Engine.Tekla.Convert.AdapterIdName;
+            SetupComparers();
+            GetDependencyTypes();
+            BH.Adapter.Modules.Structure.ModuleLoader.LoadModules(this);
+
             if (active)
             {
-                AdapterId = BH.Engine.Tekla.Convert.AdapterId;   //Set the "AdapterId" to "SoftwareName_id". Generally stored as a constant string in the convert class in the SoftwareName_Engine
-
 
                 m_TeklaModel = new Model();
                 m_CatalogHandler = new CatalogHandler();
