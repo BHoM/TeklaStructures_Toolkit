@@ -27,6 +27,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using BH.oM.Structure.Elements;
+using BH.oM.Adapter;
+using BH.oM.Base;
 using Tekla.Structures.Model;
 
 
@@ -38,7 +40,7 @@ namespace BH.Adapter.Tekla
         /**** Adapter overload method                   ****/
         /***************************************************/
 
-        protected override object NextId(Type objectType, bool refresh = false)
+        protected override object NextFreeId(Type objectType, bool refresh = false)
         {
             //Method that returns the next free index for a specific object type. 
             //Software dependent which type of index to return. Could be int, string, Guid or whatever the specific software is using
