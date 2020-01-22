@@ -95,7 +95,7 @@ namespace BH.Adapter.Tekla
                     Beam tsBeam = new Beam();
                     if(c.cutObject.GetType() == typeof(BH.oM.Structure.Elements.FramingElement))
                     {
-                       int ids  = (int)c.cutObject.CustomData[AdapterId] ;
+                       int ids  = (int)c.cutObject.CustomData[AdapterIdName] ;
                        ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(ids));
                        tsBeam =  tsObj as Beam;
                     }

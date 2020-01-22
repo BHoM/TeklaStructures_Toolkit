@@ -51,7 +51,7 @@ namespace BH.Adapter.Tekla
 
             foreach (Connection connection in connections)
             {
-                int connectionId = (int)connection.CustomData[AdapterId];
+                int connectionId = (int)connection.CustomData[AdapterIdName];
 
                 if (m_ConnectionLibrary.ContainsKey(connection.Name))
                 {
