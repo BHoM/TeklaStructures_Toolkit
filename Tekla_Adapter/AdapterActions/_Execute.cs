@@ -9,6 +9,7 @@ using BH.oM.Structure.Elements;
 using BH.Engine.Tekla;
 using BH.oM.Geometry;
 using BH.oM.Adapter;
+using BH.oM.Adapter.Commands.Tekla;
 using BH.oM.Reflection;
 using BH.oM.Adapter.Commands;
 
@@ -33,10 +34,20 @@ namespace BH.Adapter.Tekla
             return output;
         }
 
-        public bool RunCommand(ChangeWorkPlane_Tekla command)
+        public bool RunCommand(IExecuteCommand command)
         {
-            if (command == "CHANGE WORK PLANE")
-            {
+
+            BH.Engine.Reflection.Compute.RecordError("This command is not recognised!");
+            return false;
+        }
+
+        public bool RunCommand(ChangeWorkPlane command)
+        {
+            bool success;
+
+            command.zAxis
+
+
                 BH.oM.Geometry.Vector xAxis = new Vector();
                 string[] caseStringAlt =
                 {
@@ -89,7 +100,7 @@ namespace BH.Adapter.Tekla
                     }
                 }
 
-                BH.oM.Geometry.Plane plane = null;
+                BH.oM.Geometry.Plane plane = command.Plane;
                 string[] caseStringAlt4 =
 {
                     "Plane",
@@ -131,15 +142,10 @@ namespace BH.Adapter.Tekla
                 }
 
                 success = PlaneHandler.SetCurrentTransformationPlane(new TransformationPlane(cs));
-            }
 
             return success;
         }
-            return true;
-        }
 
 
-
-            
-    }
 }
+
