@@ -53,6 +53,7 @@ bld/
 [Ll]og/
 [Bb]uild/
 [Pp]ackages/
+ObjDir/
 
 # Visual Studio User File #
 ###########################
