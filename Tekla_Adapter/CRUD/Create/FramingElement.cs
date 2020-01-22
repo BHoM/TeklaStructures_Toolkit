@@ -127,7 +127,7 @@ namespace BH.Adapter.Tekla
                     success = false;
 
                 framing.CustomData.Remove(AdapterIdName);
-                framing.CustomData.Add(AdapterId, tsBeam.Identifier.ID);
+                framing.CustomData.Add(AdapterIdName, tsBeam.Identifier.ID);
             }
 
             return success;
