@@ -12,9 +12,14 @@ using Tekla.Structures;
 using Tekla.Structures.Model;
 using tsGeo = Tekla.Structures.Geometry3d;
 
-namespace BH.oM.Adapter.Commands
+namespace BH.oM.Adapter.Commands.Tekla
 {
-    public class ChangeWorkPlane_Tekla : IExecuteCommand, IObject
+    public class ChangeWorkPlane : IExecuteCommand, IObject
     {
+        public BH.oM.Geometry.Plane Plane { get; set; } = null;
+
+        public BH.oM.Geometry.Vector XVextor { get; set; } = null;
+        public BH.oM.Geometry.Vector YVextor { get; set; } = null;
+
 
     }
