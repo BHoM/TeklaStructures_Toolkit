@@ -26,8 +26,15 @@ namespace BH.Adapter.Tekla
 
         public override Output<List<object>, bool> Execute(IExecuteCommand command, ActionConfig actionConfig = null)
         {
-            bool success = true;
+            var output = new Output<List<object>, bool>() { Item1 = null, Item2 = false };
 
+            output.Item2 = RunCommand(command as dynamic);
+
+            return output;
+        }
+
+        public bool RunCommand(ChangeWorkPlane_Tekla command)
+        {
             if (command == "CHANGE WORK PLANE")
             {
                 BH.oM.Geometry.Vector xAxis = new Vector();
@@ -128,5 +135,11 @@ namespace BH.Adapter.Tekla
 
             return success;
         }
+            return true;
+        }
+
+
+
+            
     }
 }
