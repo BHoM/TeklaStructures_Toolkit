@@ -2,3 +2,8 @@ C:\Users\msuen\OneDrive - BuroHappold\Documents\GitHub\Tekla_Toolkit\ObjDir\2018
 C:\Users\msuen\OneDrive - BuroHappold\Documents\GitHub\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csprojResolveAssemblyReference.cache
 C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csprojAssemblyReference.cache
 C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csproj.CoreCompileInputs.cache
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\Build\Tekla_Adapter.dll
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\Build\Tekla_Adapter.pdb
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.csproj.CopyComplete
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.dll
+C:\Users\mhenriks\OneDrive - BuroHappold\Documents\BHoMGit\Tekla_Toolkit\ObjDir\2018\Tekla_Adapter\Tekla_Adapter.pdb
