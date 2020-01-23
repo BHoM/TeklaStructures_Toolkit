@@ -37,7 +37,7 @@ namespace BH.Adapter.Tekla
         public bool RunCommand(IExecuteCommand command)
         {
 
-            BH.Engine.Reflection.Compute.RecordError("This command is not recognised!");
+            BH.Engine.Reflection.Compute.RecordError($"The command {command.GetType().Name} is not recognised by {this.GetType().Name}.");
             return false;
         }
 
@@ -85,4 +85,3 @@ namespace BH.Adapter.Tekla
 
     }
 }
-
