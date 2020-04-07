@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +14,7 @@ namespace BH.oM.Structure.Elements
 {
     public class BoltGroup : BHoMObject
     {
-        public Bolt Bolt { get; set; }
+        public virtual Bolt Bolt { get; set; }
 
         // Washer 
 

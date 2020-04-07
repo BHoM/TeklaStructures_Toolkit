@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +11,11 @@ namespace BH.oM.Structure.Elements
 {
     public class Bolt : BHoMObject
     {
-        public double Diameter { get; set; }
+        public virtual double Diameter { get; set; }
 
-        public string Standard { get; set; }
+        public virtual string Standard { get; set; }
 
-        public Line Centerline { get; set; }
+        public virtual Line Centerline { get; set; }
 
     }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +13,11 @@ namespace BH.oM.Structure.Elements
     public class Weld : BHoMObject
     {
 
-        public ICurve weldPath { get; set; }
+        public virtual ICurve weldPath { get; set; }
 
-        public BHoMObject objWelded { get; set; } = null;
+        public virtual BHoMObject objWelded { get; set; } = null;
 
-        public BHoMObject objWeldedTo { get; set; } = null;
+        public virtual BHoMObject objWeldedTo { get; set; } = null;
 
         // WeldContour Enum (none/flush/convex/concave/...)
 
