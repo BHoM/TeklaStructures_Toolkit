@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +12,11 @@ namespace BH.oM.Structure.Elements
 {
     public class Cut : BHoMObject
     {
-        public ICurve curve { get; set; } = null;
+        public virtual ICurve curve { get; set; } = null;
 
-        public BHoMObject cutObject { get; set; } = null;
+        public virtual BHoMObject cutObject { get; set; } = null;
 
-        public double thickness { get; set; } = 0;
+        public virtual double thickness { get; set; } = 0;
     }
 
 }

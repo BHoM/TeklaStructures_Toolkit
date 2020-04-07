@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +16,11 @@ namespace BH.oM.Structure.Elements
     {
         //type Enum 
 
-        public double Thickness { get; set; }
+        public virtual double Thickness { get; set; }
 
-        public Polyline Contour { get; set; }
+        public virtual Polyline Contour { get; set; }
 
-        public Common.Materials.Material Material { get; set;}
+        public virtual Common.Materials.Material Material { get; set;}
 
     }
 
