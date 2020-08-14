@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
 using BH.oM.Adapters.Tekla;
 
-namespace BH.Engine.Tekla
+namespace BH.Engine.Adapters.Tekla
 {
     public static partial class Modify
     {

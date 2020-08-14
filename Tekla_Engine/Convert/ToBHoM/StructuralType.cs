@@ -8,7 +8,7 @@ using BH.oM.Structure.Elements;
 using Tekla.Structures.Model;
 
 
-namespace BH.Engine.Tekla
+namespace BH.Engine.Adapters.Tekla
 {
     public static partial class Convert
     {

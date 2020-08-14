@@ -14,7 +14,7 @@ using tsGeo = Tekla.Structures.Geometry3d;
 using Face = Tekla.Structures.Solid.Face;
 using Point = Tekla.Structures.Geometry3d.Point;
 
-namespace BH.Engine.Tekla
+namespace BH.Engine.Adapters.Tekla
 {
     public static partial class Query
     {
