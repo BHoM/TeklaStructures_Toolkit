@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BH.oM.Common.Materials;
+
 using BH.Engine.Tekla;
 using BH.oM.Physical.Elements;
 using BH.oM.Physical.FramingProperties;

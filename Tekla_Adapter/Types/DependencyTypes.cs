@@ -21,11 +21,11 @@
  */
 
 using BH.Engine.Base.Objects;
-using BH.oM.Common.Materials;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SurfaceProperties;
 using BH.oM.Structure.SectionProperties;
 using BH.oM.Structure.Constraints;
+using BH.oM.Structure.MaterialFragments;
 using System;
 using System.Collections.Generic;
 
@@ -43,10 +43,10 @@ namespace BH.Adapter.Tekla
         {
             DependencyTypes = new Dictionary<Type, List<Type>>
             {
-                {typeof(ISectionProperty), new List<Type> { typeof(Material) } },
+                {typeof(ISectionProperty), new List<Type> { typeof(IMaterialFragment) } },
                 {typeof(RigidLink), new List<Type> { typeof(LinkConstraint), typeof(Node) } },
                 {typeof(FEMesh), new List<Type> { typeof(ISurfaceProperty), typeof(Node) } },
-                {typeof(ISurfaceProperty), new List<Type> { typeof(Material) } },
+                {typeof(ISurfaceProperty), new List<Type> { typeof(IMaterialFragment) } },
                 {typeof(Panel), new List<Type> { typeof(ISurfaceProperty) } }
             };
         }

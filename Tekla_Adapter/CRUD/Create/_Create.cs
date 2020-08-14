@@ -28,7 +28,6 @@ using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
 using BH.oM.Adapter;
 
-using BH.oM.Common.Materials;
 
 namespace BH.Adapter.Tekla
 {

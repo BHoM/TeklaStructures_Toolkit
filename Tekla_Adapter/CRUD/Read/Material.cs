@@ -26,7 +26,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Common.Materials;
+using BH.oM.Structure.MaterialFragments;
+
 
 namespace BH.Adapter.Tekla
 {
@@ -40,7 +41,7 @@ namespace BH.Adapter.Tekla
         //The List<string> in the methods below can be changed to a list of any type of identification more suitable for the toolkit
         //If no ids are provided, the convention is to return all elements of the type
 
-        private List<Material> ReadMaterials(List<string> ids = null)
+        private List<IMaterialFragment> ReadMaterials(List<string> ids = null)
         {
             //Implement code for reading materials
             throw new NotImplementedException();
