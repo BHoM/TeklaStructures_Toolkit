@@ -1,0 +1,22 @@
+﻿{
+  "Namespace": {
+    "ToNew": {
+		"BH.Engine.Tekla" : "BH.Engine.Adapters.Tekla"
+    },
+    "ToOld": {
+		"BH.Engine.Adapters.Tekla" : "BH.Engine.Tekla"
+    }
+  },
+  "Type": {
+    "ToNew": {
+    },
+    "ToOld": {
+    }
+  },
+  "Property": {
+    "ToNew": {
+    },
+    "ToOld": {
+    }
+  }
+}
