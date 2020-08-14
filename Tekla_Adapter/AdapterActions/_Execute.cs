@@ -9,7 +9,7 @@ using BH.oM.Structure.Elements;
 using BH.Engine.Tekla;
 using BH.oM.Geometry;
 using BH.oM.Adapter;
-using BH.oM.Adapter.Commands.Tekla;
+using BH.oM.Adapters.Tekla.Commands;
 using BH.oM.Reflection;
 using BH.oM.Adapter.Commands;
 

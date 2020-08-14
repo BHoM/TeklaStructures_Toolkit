@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\TeklaOpenAPI.2018.1.17267\build\TeklaOpenAPI.props" Condition="Exists('..\packages\TeklaOpenAPI.2018.1.17267\build\TeklaOpenAPI.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -58,16 +58,6 @@
     <Reference Include="BHoM_Engine">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BHoM_Engine\Build\BHoM_Engine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Common_Engine">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\BHoM_Engine\Build\Common_Engine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Common_oM">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\BHoM\Build\Common_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Dimensional_oM">
@@ -196,10 +186,6 @@
     <Compile Include="Types\DependencyTypes.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tekla_Adapter_Commands\Tekla_Adapter_Commands.csproj">
-      <Project>{91636734-bf30-4ad1-af1e-b6ea82586d54}</Project>
-      <Name>Tekla_Adapter_Commands</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tekla_Engine\Tekla_Engine.csproj">
       <Project>{625C4A3B-A0AB-4B29-B289-4C439B565EFF}</Project>
       <Name>Tekla_Engine</Name>

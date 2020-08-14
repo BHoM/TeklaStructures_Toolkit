@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekla_Engine", "Tekla_Engin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekla_oM", "Tekla_oM\Tekla_oM.csproj", "{F55CC8A5-44CB-4333-BC8A-A0EB6775B1A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekla_Adapter_Commands", "Tekla_Adapter_Commands\Tekla_Adapter_Commands.csproj", "{91636734-BF30-4AD1-AF1E-B6EA82586D54}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{F55CC8A5-44CB-4333-BC8A-A0EB6775B1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F55CC8A5-44CB-4333-BC8A-A0EB6775B1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F55CC8A5-44CB-4333-BC8A-A0EB6775B1A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91636734-BF30-4AD1-AF1E-B6EA82586D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91636734-BF30-4AD1-AF1E-B6EA82586D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91636734-BF30-4AD1-AF1E-B6EA82586D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91636734-BF30-4AD1-AF1E-B6EA82586D54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
