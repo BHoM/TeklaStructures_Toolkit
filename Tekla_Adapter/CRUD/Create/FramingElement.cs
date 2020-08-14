@@ -25,7 +25,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BH.Engine.Tekla;
+using BH.Engine.Adapters.Tekla;
 using BH.oM.Physical.Elements;
 using Tekla.Structures;
 using tsModel = Tekla.Structures.Model;

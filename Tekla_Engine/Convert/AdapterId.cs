@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.Tekla
+namespace BH.Engine.Adapters.Tekla
 {
     public static partial class Convert
     {

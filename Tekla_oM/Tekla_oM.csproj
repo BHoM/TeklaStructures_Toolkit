@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\TeklaOpenAPI.2018.1.17267\build\TeklaOpenAPI.props" Condition="Exists('..\packages\TeklaOpenAPI.2018.1.17267\build\TeklaOpenAPI.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -8,7 +8,7 @@
     <ProjectGuid>{F55CC8A5-44CB-4333-BC8A-A0EB6775B1A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BH.oM.Adapter.Tekla</RootNamespace>
+    <RootNamespace>BH.oM.Adapters.Tekla</RootNamespace>
     <AssemblyName>Tekla_oM</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -34,26 +34,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Adapter_oM">
-<HintPath>C:\ProgramData\BHoM\Assemblies\Adapter_oM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Adapter_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BHoM">
       <SpecificVersion>False</SpecificVersion>
-<HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\BHoM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Geometry_oM">
       <SpecificVersion>False</SpecificVersion>
-<HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Geometry_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Reflection_oM">
-<HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Reflection_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Structure_oM">
       <SpecificVersion>False</SpecificVersion>
-<HintPath>C:\ProgramData\BHoM\Assemblies\Structure_oM.dll</HintPath>
+      <HintPath>C:\ProgramData\BHoM\Assemblies\Structure_oM.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
