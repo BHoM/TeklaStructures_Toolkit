@@ -1,0 +1,23 @@
+﻿{
+  "Namespace": {
+    "ToNew": {
+
+    },
+    "ToOld": {
+    }
+  },
+  "Type": {
+    "ToNew": {
+		"BH.oM.Adapter.Commands.Tekla.ChangeWorkPlane" : "BH.oM.Adapters.Tekla.Commands.ChangeWorkPlane"
+    },
+    "ToOld": {
+		"BH.oM.Adapters.Tekla.Commands.ChangeWorkPlane" : "BH.oM.Adapter.Commands.Tekla.ChangeWorkPlane"
+    }
+  },
+  "Property": {
+    "ToNew": {
+    },
+    "ToOld": {
+    }
+  }
+}
