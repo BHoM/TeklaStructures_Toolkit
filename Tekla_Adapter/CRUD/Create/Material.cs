@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BH.oM.Common.Materials;
+using BH.oM.Physical.Materials;
 
 using Tekla.Structures;
 
@@ -41,6 +41,7 @@ namespace BH.Adapter.Tekla
         private bool CreateCollection(IEnumerable<Material> materials)
         {
             //Code for creating a collection of materials in the software
+            //TODO: Check if this should be dealing with Phsyical materials or structural materials.
 
             bool success = true;
 

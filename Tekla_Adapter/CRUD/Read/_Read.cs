@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using BH.oM.Base;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SectionProperties;
-using BH.oM.Common.Materials;
+using BH.oM.Structure.MaterialFragments;
 using BH.oM.Physical.Elements;
 using BH.oM.Adapter;
 
@@ -49,7 +49,7 @@ namespace BH.Adapter.Tekla
                 return ReadNodes(ids as dynamic);
             else if (type == typeof(ISectionProperty) || type.GetInterfaces().Contains(typeof(ISectionProperty)))
                 return ReadSectionProperties(ids as dynamic);
-            else if (type == typeof(Material))
+            else if (type == typeof(IMaterialFragment))
                 return ReadMaterials(ids as dynamic);
             else if (type == typeof(IFramingElement) || type.GetInterfaces().Contains(typeof(IFramingElement)))
                 return ReadFramingElements(ids as dynamic);
