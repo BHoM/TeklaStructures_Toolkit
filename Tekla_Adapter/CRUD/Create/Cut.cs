@@ -93,7 +93,7 @@ namespace BH.Adapter.Tekla
                 else //Use Plate to Cut Parent
                 {
                     Beam tsBeam = new Beam();
-                    if(c.cutObject.GetType() == typeof(BH.oM.Structure.Elements.FramingElement))
+                    if(c.cutObject.GetType() == typeof(BH.oM.Physical.Elements.IFramingElement))
                     {
                        int ids  = (int)c.cutObject.CustomData[AdapterIdName] ;
                        ModelObject tsObj = m_TeklaModel.SelectModelObject(new Identifier(ids));
