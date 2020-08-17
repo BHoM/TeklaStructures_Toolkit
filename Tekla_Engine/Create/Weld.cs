@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BH.oM.Physical.Elements;
 using BH.oM.Structure.Elements;
 using BH.oM.Geometry;
 
@@ -14,7 +15,7 @@ namespace BH.Engine.Structure
         /**** Public Methods                            ****/
         /***************************************************/
 
-        public static Weld Weld(ICurve curve, FramingElement objectWeldedTo, FramingElement objectWelded)
+        public static Weld Weld(ICurve curve, IFramingElement objectWeldedTo, IFramingElement objectWelded)
         {
             return new Weld { weldPath = curve, objWelded = objectWelded, objWeldedTo = objectWeldedTo };
         }
