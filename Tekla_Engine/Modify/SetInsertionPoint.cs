@@ -27,6 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
 using BH.oM.Adapters.Tekla;
+using BH.Engine.Base;
 
 namespace BH.Engine.Adapters.Tekla
 {
@@ -39,7 +40,7 @@ namespace BH.Engine.Adapters.Tekla
 
         public static BH.oM.Base.BHoMObject SetInsertionPoint(this BH.oM.Base.BHoMObject obj, BarInsertionPoint barInsertionPoint = BarInsertionPoint.Centroid)
         {
-            BH.oM.Base.BHoMObject clone = (BH.oM.Base.BHoMObject)obj.GetShallowClone();
+            BH.oM.Base.BHoMObject clone = (BH.oM.Base.BHoMObject)obj.ShallowClone();
 
             clone.CustomData["InsertionPoint"] = barInsertionPoint;
 
