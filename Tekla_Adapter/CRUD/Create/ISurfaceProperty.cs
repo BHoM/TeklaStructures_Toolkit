@@ -33,7 +33,7 @@ using Tekla.Structures.Model;
 using Tekla.Structures.Filtering;
 using tsGeo = Tekla.Structures.Geometry3d;
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {

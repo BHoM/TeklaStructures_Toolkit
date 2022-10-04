@@ -33,7 +33,7 @@ using BH.oM.Structure.MaterialFragments;
 using BH.oM.Physical.Elements;
 using BH.oM.Adapter;
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {

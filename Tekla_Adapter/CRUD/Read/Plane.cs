@@ -35,7 +35,7 @@ using Tekla.Structures;
 using Tekla.Structures.Model;
 using Tekla.Structures.Filtering;
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {

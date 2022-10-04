@@ -35,7 +35,7 @@ using tsModel = Tekla.Structures.Model;
 using tsGeo = Tekla.Structures.Geometry3d;
 using System.Collections;
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {

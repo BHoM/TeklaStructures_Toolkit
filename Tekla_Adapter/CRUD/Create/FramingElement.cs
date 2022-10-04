@@ -34,7 +34,7 @@ using Tekla.Structures.Filtering;
 using BH.oM.Physical.FramingProperties;
 
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {
