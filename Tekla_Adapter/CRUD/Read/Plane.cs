@@ -28,7 +28,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
 using BH.oM.Structure.SurfaceProperties;
-using BH.Engine.Adapters.Tekla;
 using BH.oM.Geometry;
 
 using Tekla.Structures;

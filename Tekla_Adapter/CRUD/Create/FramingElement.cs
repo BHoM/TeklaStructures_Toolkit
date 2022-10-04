@@ -25,13 +25,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BH.Engine.Adapters.Tekla;
 using BH.oM.Physical.Elements;
 using Tekla.Structures;
 using tsModel = Tekla.Structures.Model;
 using Tekla.Structures.Geometry3d;
 using Tekla.Structures.Filtering;
 using BH.oM.Physical.FramingProperties;
+
+using BH.Engine.Adapters.TeklaStructures;
 
 
 namespace BH.Adapter.TeklaStructures

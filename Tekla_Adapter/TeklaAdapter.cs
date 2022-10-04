@@ -26,7 +26,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.Adapter;
-using BH.Engine.Adapters.Tekla;
 using BH.oM.Adapter;
 
 using Tekla.Structures;
@@ -50,7 +49,7 @@ namespace BH.Adapter.TeklaStructures
         public TeklaAdapter(string filePath = "", bool active = false)
         {
             //Initialise
-            AdapterIdName = BH.Engine.Adapters.Tekla.Convert.AdapterIdName;
+            AdapterIdName = BH.Engine.Adapters.TeklaStructures.Convert.AdapterIdName;
             SetupComparers();
             GetDependencyTypes();
             BH.Adapter.Modules.Structure.ModuleLoader.LoadModules(this);

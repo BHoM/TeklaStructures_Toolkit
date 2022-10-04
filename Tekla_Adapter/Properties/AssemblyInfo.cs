@@ -27,11 +27,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Tekla_Adapter")]
-[assembly: AssemblyDescription("https://github.com/BuroHappoldEngineering/Tekla_Toolkit")]
+[assembly: AssemblyTitle("TeklaStructures_Adapter")]
+[assembly: AssemblyDescription("https://github.com/BHoM/TeklaStructures_Toolkit")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Buro Happold")]
-[assembly: AssemblyProduct("Tekla_Adapter")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("TeklaStructures_Adapter")]
 [assembly: AssemblyCopyright("Copyright © https://github.com/BHoM")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -30,7 +30,7 @@ using BH.oM.Adapter;
 using BH.oM.Adapter.Commands;
 using BH.oM.Geometry;
 
-namespace BH.oM.Adapters.Tekla.Commands
+namespace BH.oM.Adapters.TeklaStructures.Commands
 {
     public class ChangeWorkPlane : IExecuteCommand, IObject
     {

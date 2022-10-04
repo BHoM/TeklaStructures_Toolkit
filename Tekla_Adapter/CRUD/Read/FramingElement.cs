@@ -27,7 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-using BH.Engine.Adapters.Tekla;
+using BH.Engine.Adapters.TeklaStructures;
 using BH.oM.Physical.Elements;
 using BH.oM.Physical.FramingProperties;
 using Tekla.Structures.Solid;
@@ -87,7 +87,7 @@ namespace BH.Adapter.TeklaStructures
 
                 bhFramingList.Add(framing);
 
-                framing.CustomData.Add("lines", BH.Engine.Adapters.Tekla.Query.PartGeo(tsBeam));
+                framing.CustomData.Add("lines", BH.Engine.Adapters.TeklaStructures.Query.PartGeo(tsBeam));
             }
 
             return bhFramingList;

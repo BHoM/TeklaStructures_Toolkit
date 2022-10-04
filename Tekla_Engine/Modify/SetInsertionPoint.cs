@@ -26,10 +26,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
-using BH.oM.Adapters.Tekla;
+using BH.oM.Adapters.TeklaStructures;
 using BH.Engine.Base;
 
-namespace BH.Engine.Adapters.Tekla
+namespace BH.Engine.Adapters.TeklaStructures
 {
     public static partial class Modify
     {

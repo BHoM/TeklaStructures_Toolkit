@@ -30,7 +30,7 @@ using BH.oM.Structure.Elements;
 using Tekla.Structures.Model;
 
 
-namespace BH.Engine.Adapters.Tekla
+namespace BH.Engine.Adapters.TeklaStructures
 {
     public static partial class Convert
     {

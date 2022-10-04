@@ -28,7 +28,7 @@ using BH.oM.Structure.Elements;
 
 
 using BH.oM.Geometry;
-using BH.Engine.Adapters.Tekla;
+using BH.Engine.Adapters.TeklaStructures;
 
 using Tekla.Structures;
 using tekmodel =  Tekla.Structures.Model;

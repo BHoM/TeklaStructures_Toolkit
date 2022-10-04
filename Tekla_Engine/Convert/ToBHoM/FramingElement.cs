@@ -31,7 +31,7 @@ using BH.oM.Physical.FramingProperties;
 using tsModel = Tekla.Structures.Model;
 
 
-namespace BH.Engine.Adapters.Tekla
+namespace BH.Engine.Adapters.TeklaStructures
 {
     public static partial class Convert
     {

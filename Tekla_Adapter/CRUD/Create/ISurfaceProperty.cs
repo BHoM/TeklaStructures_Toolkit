@@ -25,7 +25,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BH.oM.Structure.Elements;
-using BH.Engine.Adapters.Tekla;
+using BH.Engine.Adapters.TeklaStructures;
 using BH.oM.Structure.SurfaceProperties;
 
 using Tekla.Structures;

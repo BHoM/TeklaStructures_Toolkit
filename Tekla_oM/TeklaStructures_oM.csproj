@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\TeklaOpenAPI.2018.1.17267\build\TeklaOpenAPI.props" Condition="Exists('..\packages\TeklaOpenAPI.2018.1.17267\build\TeklaOpenAPI.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -8,8 +8,8 @@
     <ProjectGuid>{F55CC8A5-44CB-4333-BC8A-A0EB6775B1A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BH.oM.Adapters.Tekla</RootNamespace>
-    <AssemblyName>Tekla_oM</AssemblyName>
+    <RootNamespace>BH.oM.Adapters.TeklaStructures</RootNamespace>
+    <AssemblyName>TeklaStructures_oM</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

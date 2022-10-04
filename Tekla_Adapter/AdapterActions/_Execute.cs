@@ -28,10 +28,10 @@ using System.Threading.Tasks;
 
 using BH.oM.Structure.Elements;
 
-using BH.Engine.Adapters.Tekla;
+using BH.Engine.Adapters.TeklaStructures;
 using BH.oM.Geometry;
 using BH.oM.Adapter;
-using BH.oM.Adapters.Tekla.Commands;
+using BH.oM.Adapters.TeklaStructures.Commands;
 using BH.oM.Base;
 using BH.oM.Adapter.Commands;
 
@@ -84,18 +84,18 @@ namespace BH.Adapter.TeklaStructures
             if (plane == null)
             {
                 //If x and y have been provided use those (plane orientation matters)
-                cs = new tsGeo.CoordinateSystem(BH.Engine.Adapters.Tekla.Convert.ToTekla(origin), BH.Engine.Adapters.Tekla.Convert.ToTekla(xAxis), BH.Engine.Adapters.Tekla.Convert.ToTekla(yAxis));
+                cs = new tsGeo.CoordinateSystem(BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(origin), BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(xAxis), BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(yAxis));
             }
             else
             {
                 //If only a plane has been provided, then only the normal matters and x/y are irrelevant.  
                 if (Math.Abs(BH.Engine.Geometry.Query.DotProduct(plane.Normal, new Vector { X = 0, Y = 0, Z = 1 })) > 0.95)
                 {
-                    cs = new tsGeo.CoordinateSystem(BH.Engine.Adapters.Tekla.Convert.ToTekla(plane.Origin), new tsGeo.Vector(1, 0, 0), BH.Engine.Adapters.Tekla.Convert.ToTekla(plane.Normal));
+                    cs = new tsGeo.CoordinateSystem(BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(plane.Origin), new tsGeo.Vector(1, 0, 0), BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(plane.Normal));
                 }
                 else
                 {
-                    cs = new tsGeo.CoordinateSystem(BH.Engine.Adapters.Tekla.Convert.ToTekla(plane.Origin), new tsGeo.Vector(0, 0, 1), BH.Engine.Adapters.Tekla.Convert.ToTekla(plane.Normal));
+                    cs = new tsGeo.CoordinateSystem(BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(plane.Origin), new tsGeo.Vector(0, 0, 1), BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(plane.Normal));
                 }
             }
 

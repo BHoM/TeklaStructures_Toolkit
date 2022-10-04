@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BH.Engine.Adapters.Tekla
+namespace BH.Engine.Adapters.TeklaStructures
 {
     public static partial class Convert
     {

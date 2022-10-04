@@ -30,7 +30,7 @@ using BH.oM.Geometry;
 
 using tsGeo = Tekla.Structures.Geometry3d;
 
-namespace BH.Engine.Adapters.Tekla
+namespace BH.Engine.Adapters.TeklaStructures
 {
     public static partial class Convert
     {
@@ -56,7 +56,7 @@ namespace BH.Engine.Adapters.Tekla
 
         public static tsGeo.GeometricPlane ToTekla(this Plane plane)
         {
-            tsGeo.GeometricPlane geoPlane = new tsGeo.GeometricPlane() { Normal = BH.Engine.Adapters.Tekla.Convert.ToTekla(plane.Normal) , Origin = BH.Engine.Adapters.Tekla.Convert.ToTekla(plane.Origin) };
+            tsGeo.GeometricPlane geoPlane = new tsGeo.GeometricPlane() { Normal = BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(plane.Normal) , Origin = BH.Engine.Adapters.TeklaStructures.Convert.ToTekla(plane.Origin) };
             
             return geoPlane;
         }
