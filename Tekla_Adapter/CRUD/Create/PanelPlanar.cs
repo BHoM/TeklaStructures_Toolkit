@@ -53,7 +53,7 @@ namespace BH.Adapter.TeklaStructures
                 ////Create a Plate Profile
                 ContourPlate contourPlate = new ContourPlate();
                 Profile pfl = new Profile();
-                foreach(Point point in Engine.Structure.Query.ControlPoints(p))
+                foreach(Point point in Engine.Spatial.Query.ControlPoints(p))
                     contourPlate.Contour.AddContourPoint(new ContourPoint(new tsGeo.Point(point.X, point.Y, point.Z), new Chamfer()));
 
                 ////Check if the section property already exists, if not, create and apply
