@@ -10,14 +10,14 @@ using BH.Engine.Adapters.Tekla;
 using BH.oM.Geometry;
 using BH.oM.Adapter;
 using BH.oM.Adapters.Tekla.Commands;
-using BH.oM.Reflection;
+using BH.oM.Base;
 using BH.oM.Adapter.Commands;
 
 using Tekla.Structures;
 using Tekla.Structures.Model;
 using tsGeo = Tekla.Structures.Geometry3d;
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {
@@ -37,7 +37,7 @@ namespace BH.Adapter.Tekla
         public bool RunCommand(IExecuteCommand command)
         {
 
-            BH.Engine.Reflection.Compute.RecordError($"The command {command.GetType().Name} is not recognised by {this.GetType().Name}.");
+            BH.Engine.Base.Compute.RecordError($"The command {command.GetType().Name} is not recognised by {this.GetType().Name}.");
             return false;
         }
 

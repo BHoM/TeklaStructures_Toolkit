@@ -7,8 +7,6 @@ using BH.oM.Base;
 using BH.oM.Adapter;
 using BH.oM.Adapter.Commands;
 using BH.oM.Geometry;
-using BH.oM.Reflection;
-
 
 namespace BH.oM.Adapters.Tekla.Commands
 {

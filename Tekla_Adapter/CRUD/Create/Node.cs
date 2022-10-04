@@ -30,7 +30,7 @@ using BH.oM.Structure.Elements;
 
 
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {

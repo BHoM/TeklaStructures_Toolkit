@@ -29,7 +29,7 @@ using BH.oM.Physical.Materials;
 
 using Tekla.Structures;
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {

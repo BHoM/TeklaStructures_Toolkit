@@ -12,7 +12,7 @@ using Tekla.Structures.Model;
 using Tekla.Structures.Catalogs;
 
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter : BHoMAdapter
     {

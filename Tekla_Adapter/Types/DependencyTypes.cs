@@ -29,7 +29,7 @@ using BH.oM.Structure.MaterialFragments;
 using System;
 using System.Collections.Generic;
 
-namespace BH.Adapter.Tekla
+namespace BH.Adapter.TeklaStructures
 {
     public partial class TeklaAdapter
     {
